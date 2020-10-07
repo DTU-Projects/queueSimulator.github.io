@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <title>Queueing theory models calculator</title>
+        <link rel="stylesheet" href="css/styles.css" type="text/css">
+    </head>
+
+    <body>
+        <div class="container">
+            
+            <div class="module-border-wrap">
+                <div class="module head">
+                    <h1>Queueing Theory Calculator</h1>
+                </div>
+            </div><br>
+
+            <div class="module-border-wrap">
+                <div class="module">
+                    <h2>1. Choose the Queueing Model</h2>
+                        <div class="grid-container">
+                            <div class="grid-item">
+                                <input type="radio" id="mmc" name="model" value="mmc" checked>
+                                <label for="mmc">M/M/1</label>
+                            </div>
+                            <div class="grid-item">
+                                <input type="radio" id="mmi" name="model" value="mmi" disabled>
+                                <label for="mmf">M/M/Inf<br><span class="cs">COMING SOON</span></label>
+                            </div>
+                            <div class="grid-item">
+                                <input type="radio" id="mmck" name="model" value="mmck" disabled>
+                                <label for="mmck">M/M/C/K<br><span class="cs">COMING SOON</span></label>
+                            </div>  
+                            <div class="grid-item">
+                                <input type="radio" id="mmcm" name="model" value="mmcm" disabled>
+                                <label for="mmcm">M/M/C/*/M<br><span class="cs">COMING SOON</span></label>
+                            </div>
+                        </div>
+                        <div class="info">
+                            <div>M/M/1 - Single queue, 1 server.</div>
+                            <div>M/M/Inf - At least one server per customer.</div>
+                            <div>M/M/C/K - Queue can only hold K customers.</div>
+                            <div>M/M/C/*/M - Only M customers can use the server.</div>
+                        </div>
+                    </div>
+                </div><br>
+
+                <div class="module-border-wrap">
+                    <div class="module">
+                        <div class="input_val">
+                            <p>λ (no units): </p><input type="number" id="lamb">
+                            <p>μ (no units): </p><input type="number" id="mu">
+                        </div>
+                    </div>
+                </div><br>
+
+                <button class="myBtn" id="calcBtn" type="button"><a href="#result"><strong>Calculate</strong></a></button>
+                <br>
+
+                <div id="result" class="module-border-wrap">
+                    <div class="module head">
+                        <h1>Result</h1>
+                    </div>
+                </div><br>
+
+                <div class="module-border-wrap res">
+                    <div class="module">
+                        <h3>The Utilization</h3>
+                        <h3 class="indent">ρ = <span id="res1"></span></h3>
+                        <h3>The Expected number of jobs in the system</h3>
+                        <h3 class="indent">L = <span id="res2"></span></h3>
+                        <h3>The Expected number of jobs in the queue</h3>
+                        <h3 class="indent">Lq = <span id="res3"></span></h3>
+                        <h3>The Average time spent in the system</h3>
+                        <h3 class="indent">W = <span id="res4"></span></h3>
+                        <h3>The Average time spent waiting in the queue</h3>
+                        <h3 class="indent">Wq = <span id="res5"></span></h3>
+                    </div>
+                </div><br>
+
+            </div>
+        </div>
+    </body>
+
+    <footer>
+        <script src="script.js" type="text/javascript"></script>
+    </footer>
+    
+</html>
