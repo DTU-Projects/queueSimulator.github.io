@@ -3,7 +3,7 @@ console.log("We will rock you!");
 var myBtn = document.getElementById('calcBtn');
 var lamb = document.getElementById('lamb');
 var mu = document.getElementById('mu');
-
+While(1){
 myBtn.addEventListener('click', ()=>{
     if(lamb.value> mu.value){
         alert("if λ is greter than μ then queue will increase indefinitely and the system will not have a stationary distribution! ");
@@ -25,3 +25,4 @@ myBtn.addEventListener('click', ()=>{
         document.getElementById('res5').innerText = Wq;
     }
 });
+}
