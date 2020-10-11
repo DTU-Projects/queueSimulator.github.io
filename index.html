@@ -9,15 +9,16 @@
     <body>
         <div class="container">
             
-            <div class="module-border-wrap">
-                <div class="module head">
-                    <h1>Queueing Theory Calculator</h1>
-                </div>
-            </div><br>
-
-            <div class="module-border-wrap">
-                <div class="module">
-                    <h2>1. Choose the Queueing Model</h2>
+            <div class="box" id="top">
+                
+                <div class="module-border-wrap">
+                    <div class="module head">
+                        <h1>Queueing Theory Calculator</h1>
+                    </div>
+                </div><br>
+                <div class="module-border-wrap">
+                    <div class="module">
+                        <h2>1. Choose the Queueing Model</h2>
                         <div class="grid-container">
                             <div class="grid-item">
                                 <input type="radio" id="mmc" name="model" value="mmc" checked>
@@ -44,7 +45,6 @@
                         </div>
                     </div>
                 </div><br>
-
                 <div class="module-border-wrap">
                     <div class="module">
                         <div class="input_val">
@@ -52,31 +52,54 @@
                             <p>μ (no units): </p><input type="number" id="mu">
                         </div>
                     </div>
-                </div><br>
+                </div><br><br>
+                <button class="myBtn" id="calcBtn" type="button"><strong>Calculate</strong></button>
+            </div>
 
-                <button class="myBtn" id="calcBtn" type="button"><a href="#result"><strong>Calculate</strong></a></button>
-                <br>
+            <div class="separator"></div>
 
-                <div id="result" class="module-border-wrap">
+            <div class="box" id="result">
+                <div class="module-border-wrap">
                     <div class="module head">
                         <h1>Result</h1>
                     </div>
                 </div><br>
-
-                <div class="module-border-wrap res">
+                <div class="module-border-wrap">
                     <div class="module">
                         <h3>The Utilization</h3>
-                        <h3 class="indent">ρ = <span id="res1"></span></h3>
+                        <h2 class="indent">ρ = <span id="res1" style="color: lightgreen;"></span></h2>
                         <h3>The Expected number of jobs in the system</h3>
-                        <h3 class="indent">L = <span id="res2"></span></h3>
+                        <h2 class="indent">L = <span id="res2" style="color: lightgreen;"></span></h2>
                         <h3>The Expected number of jobs in the queue</h3>
-                        <h3 class="indent">Lq = <span id="res3"></span></h3>
+                        <h2 class="indent">Lq = <span id="res3" style="color: lightgreen;"></span></h2>
                         <h3>The Average time spent in the system</h3>
-                        <h3 class="indent">W = <span id="res4"></span></h3>
+                        <h2 class="indent">W = <span id="res4" style="color: lightgreen;"></span></h2>
                         <h3>The Average time spent waiting in the queue</h3>
-                        <h3 class="indent">Wq = <span id="res5"></span></h3>
+                        <h2 class="indent">Wq = <span id="res5" style="color: lightgreen;"></span></h2>
+                    </div>
+                </div><br><br>
+                <button class="myBtn" id="grpBtn" type="button"><strong>See Graphically</strong></button> 
+            </div>
+                
+            <div class="separator"></div>
+
+            <div class="box" id="graph">
+                
+                <div id="graph" class="module-border-wrap">
+                    <div class="module head">
+                        <h1>Graphs</h1>
                     </div>
                 </div><br>
+                <div class="module-border-wrap">
+                    <div class="module">
+                        <h3>Graphs goes here</h3>
+                        <h1 style="color: lightgreen;">COMING SOON</h1>
+                    </div>
+                </div><br><br>
+                <button class="myBtn" id="upBtn" type="button">Back to top &uarr;</button>
+            </div>
+
+            <div class="separator"></div>
 
             </div>
         </div>

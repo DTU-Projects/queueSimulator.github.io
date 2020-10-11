@@ -12,9 +12,8 @@
     margin: 15px 0 25px;
 }
 
-a{
-    text-decoration: none;
-    color: cornsilk;
+.box{
+    padding-top: 35px;
 }
 
 .input_val{
@@ -37,10 +36,7 @@ input[type=number]{
 
 .indent{
     text-indent: 30px;
-}
-
-.container{
-    margin-top: 30px;
+    color: yellow;
 }
 
 body{
@@ -49,14 +45,22 @@ body{
 }
 
 .head{
+    padding-top: 30px;
+}
+
+.separator{
+    margin: 500px;
+}
+
+.head{
     text-align: center;
     font-size: 25px;
 }
 
 .module-border-wrap{
+    position: relative;
     margin-left: 20%;
     max-width: 60%;
-    position: relative;
     background: linear-gradient(to right, red, purple);
     padding: 3px;
 }
@@ -69,6 +73,7 @@ body{
 
 .myBtn{
     display: block;
+    color: cornsilk;
     height: 60px;
     width: 18%;
     background: linear-gradient(to right, red, purple);
@@ -77,10 +82,6 @@ body{
     font-size: 30px;
 }
 
-#result{
-    margin-top: 400px;
-}
-
-.res{
-    margin-bottom: 120px;
+html{
+    scroll-behavior: smooth;
 }
