@@ -21,20 +21,24 @@
                         <h2>1. Choose the Queueing Model</h2>
                         <div class="grid-container">
                             <div class="grid-item">
-                                <input type="radio" id="mmc" name="model" value="mmc" checked>
-                                <label for="mmc">M/M/1</label>
+                                <div class="model">M/M/1<br>
+                                    <button type="button" id="mmc"><span class="dot"></button>
+                                </div>
                             </div>
                             <div class="grid-item">
-                                <input type="radio" id="mmi" name="model" value="mmi" disabled>
-                                <label for="mmf">M/M/Inf<br><span class="cs">COMING SOON</span></label>
+                                <div class="model">M/M/Inf<br>
+                                    <button type="button" id="mmi"><span class="dot"></button>
+                                </div>
                             </div>
                             <div class="grid-item">
-                                <input type="radio" id="mmck" name="model" value="mmck" disabled>
-                                <label for="mmck">M/M/C/K<br><span class="cs">COMING SOON</span></label>
+                                <div class="model">M/M/C/K<br>
+                                    <button type="button" id="mmck"><span class="dot"></span></button>
+                                </div>
                             </div>  
                             <div class="grid-item">
-                                <input type="radio" id="mmcm" name="model" value="mmcm" disabled>
-                                <label for="mmcm">M/M/C/*/M<br><span class="cs">COMING SOON</span></label>
+                                <div class="model">M/M/C/*/M<br>
+                                    <button type="button" id="mmcm"><span class="dot"></span></button>
+                                </div>
                             </div>
                         </div>
                         <div class="info">
@@ -47,9 +51,9 @@
                 </div><br>
                 <div class="module-border-wrap">
                     <div class="module">
-                        <div class="input_val">
-                            <p>λ (no units): </p><input type="number" id="lamb">
-                            <p>μ (no units): </p><input type="number" id="mu">
+                        <h2>2. Input Values</h2>
+                        <div id="dynamic_input">
+                            
                         </div>
                     </div>
                 </div><br><br>
