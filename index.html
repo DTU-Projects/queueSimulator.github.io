@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-    
+
     <head>
         <title>Queueing theory models calculator</title>
         <link rel="stylesheet" href="css/styles.css" type="text/css">
@@ -8,9 +8,9 @@
 
     <body>
         <div class="container">
-            
+
             <div class="box" id="top">
-                
+
                 <div class="module-border-wrap">
                     <div class="module head">
                         <h1>Queueing Theory Calculator</h1>
@@ -21,7 +21,7 @@
                         <h2>1. Choose the Queueing Model</h2>
                         <div class="grid-container">
                             <div class="grid-item">
-                                <div class="model">M/M/1<br>
+                                <div class="model">M/M/C<br>
                                     <button type="button" id="mmc"><span class="dot"></button>
                                 </div>
                             </div>
@@ -34,7 +34,7 @@
                                 <div class="model">M/M/C/K<br>
                                     <button type="button" id="mmck"><span class="dot"></span></button>
                                 </div>
-                            </div>  
+                            </div>
                             <div class="grid-item">
                                 <div class="model">M/M/C/*/M<br>
                                     <button type="button" id="mmcm"><span class="dot"></span></button>
@@ -53,7 +53,7 @@
                     <div class="module">
                         <h2>2. Input Values</h2>
                         <div id="dynamic_input">
-                            
+
                         </div>
                     </div>
                 </div><br><br>
@@ -80,15 +80,17 @@
                         <h2 class="indent">W = <span id="res4" style="color: lightgreen;"></span></h2>
                         <h3>The Average time spent waiting in the queue</h3>
                         <h2 class="indent">Wq = <span id="res5" style="color: lightgreen;"></span></h2>
+                        <h3>Probability of idle server</h3>
+                        <h2 class="indent">P(0) = <span id="res6" style="color: lightgreen;"></span></h2>
                     </div>
                 </div><br><br>
-                <button class="myBtn" id="grpBtn" type="button"><strong>See Graphically</strong></button> 
+                <button class="myBtn" id="grpBtn" type="button"><strong>See Graphically</strong></button>
             </div>
-                
+
             <div class="separator"></div>
 
             <div class="box" id="graph">
-                
+
                 <div id="graph" class="module-border-wrap">
                     <div class="module head">
                         <h1>Graphs</h1>
@@ -112,5 +114,5 @@
     <footer>
         <script src="script.js" type="text/javascript"></script>
     </footer>
-    
+
 </html>
