@@ -9,7 +9,6 @@ var mmckBtn = document.getElementById('mmck');
 var mmcmBtn = document.getElementById('mmcm');
 var type;
 
-
 function create(htmlStr){
     var frag = document.createDocumentFragment(),
         temp = document.createElement('div');
@@ -19,24 +18,9 @@ function create(htmlStr){
     }
     return frag;
 }
-var inputEl = document.getElementById('dynamic_input');
 
-/*
-<div class="grid-container">
-    <div class="grid-item">
-        <p>λ (no units): </p><input type="number" id="lamb">
-    </div>
-    <div class="grid-item">
-        <p>μ (no units): </p><input type="number" id="mu">
-    </div>
-    <div class="grid-item">
-        <p>C (no units): </p><input type="number" id="c">
-    </div>
-    <div class="grid-item">
-        <p>M (no units): </p><input type="number" id="c">
-    </div>
-</div>
-*/
+var inputEl = document.getElementById('dynamic_input');
+var resultEl = document.getElementById('dynamic_result');
 
 function factorial(num){
     if (num === 0 || num === 1)
@@ -50,46 +34,57 @@ function combination(n,r){
   return (factorial(n)/(factorial(r)*factorial(n-r)));
 }
 
-
-mmcBtn.addEventListener('click', () => {
+function selectMMC(){
     console.log("Selecting MMC model...");
     type = 'mmc';
-    inputEl.innerHTML = '<div class="grid-container"><div class="grid-item"><p>λ (no units): <input type="number" id="lamb"></p></div><div class="grid-item"><p>μ (no units): <input type="number" id="mu"></p></div><div class="grid-item"><p>C (no units): <input type="number" value=1 id="c"></p></div></div>';
+    inputEl.innerHTML = '<div class="grid-container"><div class="grid-item"><p>&lambda; (no units): <input type="number" id="lamb"></p></div><div class="grid-item"><p>&mu; (no units): <input type="number" id="mu"></p></div><div class="grid-item"><p>C (no units): <input type="number" value=1 id="c"></p></div></div>';
     mmcBtn.innerHTML = '<span class="dot-checked"></span>';
     mmiBtn.innerHTML = '<span class="dot"></span>';
     mmckBtn.innerHTML = '<span class="dot"></span>';
     mmcmBtn.innerHTML = '<span class="dot"></span>';
-});
-mmiBtn.addEventListener('click', () => {
+}
+function selectMMI(){
     console.log("Selecting MMInf model...");
     type= 'mminf';
-    inputEl.innerHTML = '<div class="grid-container"><div class="grid-item"><p>λ (no units): <input type="number" id="lamb"></p></div><div class="grid-item"><p>μ (no units): <input type="number" id="mu"></p></div></div>';
+    inputEl.innerHTML = '<div class="grid-container"><div class="grid-item"><p>&lambda; (no units): <input type="number" id="lamb"></p></div><div class="grid-item"><p>&mu; (no units): <input type="number" id="mu"></p></div></div>';
     mmcBtn.innerHTML = '<span class="dot"></span>';
     mmiBtn.innerHTML = '<span class="dot-checked"></span>';
     mmckBtn.innerHTML = '<span class="dot"></span>';
     mmcmBtn.innerHTML = '<span class="dot"></span>';
-});
-mmckBtn.addEventListener('click', () => {
+}
+function selectMMCK(){
     console.log("Selecting MMCK model...");
     type = 'mmck';
-    inputEl.innerHTML = '<div class="grid-container"><div class="grid-item"><p>λ (no units): <input type="number" id="lamb"></p></input></div><div class="grid-item"><p>μ (no units): <input type="number" id="mu"></p></div><div class="grid-item"><p>C (no units): <input type="number" id="c"></p></div><div class="grid-item"><p>K (no units): <input type="number" id="k"></p></div></div>';
+    inputEl.innerHTML = '<div class="grid-container"><div class="grid-item"><p>&lambda; (no units): <input type="number" id="lamb"></p></input></div><div class="grid-item"><p>&mu; (no units): <input type="number" id="mu"></p></div><div class="grid-item"><p>C (no units): <input type="number" id="c"></p></div><div class="grid-item"><p>K (no units): <input type="number" id="k"></p></div></div>';
     mmcBtn.innerHTML = '<span class="dot"></span>';
     mmiBtn.innerHTML = '<span class="dot"></span>';
     mmckBtn.innerHTML = '<span class="dot-checked"></span>';
     mmcmBtn.innerHTML = '<span class="dot"></span>';
-});
-mmcmBtn.addEventListener('click', () => {
+}
+function selectMMCM(){
     console.log("Selecting MMC*M model...");
     type = 'mmc*m';
-    inputEl.innerHTML = '<div class="grid-container"><div class="grid-item"><p>λ (no units): <input type="number" id="lamb"></p></div><div class="grid-item"><p>μ (no units): <input type="number" id="mu"></p></div><div class="grid-item"><p>C (no units): <input type="number" id="c"></p></div><div class="grid-item"><p>M (no units): <input type="number" id="m"></p></div></div>'
+    inputEl.innerHTML = '<div class="grid-container"><div class="grid-item"><p>&lambda; (no units): <input type="number" id="lamb"></p></div><div class="grid-item"><p>&mu; (no units): <input type="number" id="mu"></p></div><div class="grid-item"><p>C (no units): <input type="number" id="c"></p></div><div class="grid-item"><p>M (no units): <input type="number" id="m"></p></div></div>'
     mmcBtn.innerHTML = '<span class="dot"></span>';
     mmiBtn.innerHTML = '<span class="dot"></span>';
     mmckBtn.innerHTML = '<span class="dot"></span>';
     mmcmBtn.innerHTML = '<span class="dot-checked"></span>';
-});
+}
+
+mmcBtn.addEventListener('click', selectMMC);
+document.getElementById('mmc2').addEventListener('click', selectMMC);
+
+mmiBtn.addEventListener('click', selectMMI);
+document.getElementById('mmi2').addEventListener('click', selectMMI);
+
+mmckBtn.addEventListener('click', selectMMCK);
+document.getElementById('mmck2').addEventListener('click', selectMMCK);
+
+mmcmBtn.addEventListener('click', selectMMCM);
+document.getElementById('mmcm2').addEventListener('click', selectMMCM);
+
 
 calcBtn.addEventListener('click', ()=>{
-
 
     var lambEl = document.getElementById('lamb');
     var muEl = document.getElementById('mu');
@@ -98,6 +93,7 @@ calcBtn.addEventListener('click', ()=>{
     var mEl = document.getElementById('m');
     var lamb = parseInt(lambEl.value);  //lamda value
     var mu = parseInt(muEl.value);  //mu value
+
     switch(type) {
       case 'mmc':
             var c = parseInt(cEl.value); //c value
@@ -126,16 +122,30 @@ calcBtn.addEventListener('click', ()=>{
               var Ws = Ls/lamb;
               var Wq = Lq/lamb;
             }
-	           break;
+
+            resultEl.innerHTML = '<h3>The Utilization</h3><h2 class="indent">&rho; = <span id="res1" style="color: lightgreen;"></span></h2><h3>The Expected number of jobs in the system</h3><h2 class="indent">Ls = <span id="res2" style="color: lightgreen;"></span></h2><h3>The Expected number of jobs in the queue</h3><h2 class="indent">Lq = <span id="res3" style="color: lightgreen;"></span></h2><h3>The Average time spent in the system</h3><h2 class="indent">Ws = <span id="res4" style="color: lightgreen;"></span></h2><h3>The Average time spent waiting in the queue</h3><h2 class="indent">Wq = <span id="res5" style="color: lightgreen;"></span></h2><h3>Probability of idle server</h3><h2 class="indent">P(0) = <span id="res6" style="color: lightgreen;"></span></h2>';
+            document.getElementById('res1').innerText = (util).toFixed(5);
+            document.getElementById('res2').innerText = (Ls).toFixed(5);
+            document.getElementById('res3').innerText = (Lq).toFixed(5);
+            document.getElementById('res4').innerText = (Ws).toFixed(5);
+            document.getElementById('res5').innerText = (Wq).toFixed(5);
+            document.getElementById('res6').innerText = (P0).toFixed(5);
+
+	        break;
 
       case 'mminf':
             console.log("MMinf");
             var util = 0;
             var p0 = 0;
-            var Ls = (lamb/mu).toFixed(5);
+            var Ls = lamb/mu;
             var Lq = 0;
-            var Ws = (Ls/lamb).toFixed(5);
+            var Ws = Ls/lamb;
             var Wq = 0;
+
+            resultEl.innerHTML = '<h3>The Expected number of jobs in the system</h3><h2 class="indent">Ls = <span id="res2" style="color: lightgreen;"></span></h2><h3>The Average time spent in the system</h3><h2 class="indent">Ws = <span id="res4" style="color: lightgreen;"></span></h2>';
+            document.getElementById('res2').innerText = (Ls).toFixed(5);
+            document.getElementById('res4').innerText = (Ws).toFixed(5);
+
             break;
 
       case 'mmck':
@@ -198,6 +208,15 @@ calcBtn.addEventListener('click', ()=>{
               }
               }
             }
+
+            resultEl.innerHTML = '';resultEl.innerHTML = '<h3>The Utilization</h3><h2 class="indent">&rho; = <span id="res1" style="color: lightgreen;"></span></h2><h3>The Expected number of jobs in the system</h3><h2 class="indent">Ls = <span id="res2" style="color: lightgreen;"></span></h2><h3>The Expected number of jobs in the queue</h3><h2 class="indent">Lq = <span id="res3" style="color: lightgreen;"></span></h2><h3>The Average time spent in the system</h3><h2 class="indent">Ws = <span id="res4" style="color: lightgreen;"></span></h2><h3>The Average time spent waiting in the queue</h3><h2 class="indent">Wq = <span id="res5" style="color: lightgreen;"></span></h2><h3>Probability of idle server</h3><h2 class="indent">P(0) = <span id="res6" style="color: lightgreen;"></span></h2>';
+            document.getElementById('res1').innerText = (util).toFixed(5);
+            document.getElementById('res2').innerText = (Ls).toFixed(5);
+            document.getElementById('res3').innerText = (Lq).toFixed(5);
+            document.getElementById('res4').innerText = (Ws).toFixed(5);
+            document.getElementById('res5').innerText = (Wq).toFixed(5);
+            document.getElementById('res6').innerText = (P0).toFixed(5);
+
             break;
       case 'mmc*m': //Done
             console.log("MMc*m");
@@ -249,15 +268,14 @@ calcBtn.addEventListener('click', ()=>{
               }
 
             }
-	           break;
-    }
 
-        document.getElementById('res1').innerText = util;
-        document.getElementById('res2').innerText = Ls;
-        document.getElementById('res3').innerText = Lq;
-        document.getElementById('res4').innerText = Ws;
-        document.getElementById('res5').innerText = Wq;
-        document.getElementById('res6').innerText = P0;
+            resultEl.innerHTML = '<h3>The Expected number of jobs in the system</h3><h2 class="indent">Ls = <span id="res2" style="color: lightgreen;"></span></h2><h3>The Expected number of jobs in the queue</h3><h2 class="indent">Lq = <span id="res3" style="color: lightgreen;"></span></h2><h3>The Average time spent in the system</h3><h2 class="indent">Ws = <span id="res4" style="color: lightgreen;"></span></h2><h3>The Average time spent waiting in the queue</h3><h2 class="indent">Wq = <span id="res5" style="color: lightgreen;"></span></h2>'; 
+            document.getElementById('res2').innerText = (Ls).toFixed(5);
+            document.getElementById('res3').innerText = (Lq).toFixed(5);
+            document.getElementById('res4').innerText = (Ws).toFixed(5);
+            document.getElementById('res5').innerText = (Wq).toFixed(5);
+	        break;
+    }
         window.location.href = "#result";
     }
 );  //removed } from here
@@ -268,4 +286,4 @@ upBtn.addEventListener('click', ()=>{
 
 grpBtn.addEventListener('click', ()=>{
     window.location.href = "#graph";
-})
+});

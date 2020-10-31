@@ -3,7 +3,7 @@
 
     <head>
         <title>Queueing theory models calculator</title>
-        <link rel="stylesheet" href="css/styles.css" type="text/css">
+        <link rel="stylesheet" href="styles.css" type="text/css">
     </head>
 
     <body>
@@ -21,40 +21,36 @@
                         <h2>1. Choose the Queueing Model</h2>
                         <div class="grid-container">
                             <div class="grid-item">
-                                <div class="model">M/M/C<br>
+                                <div class="model tooltip" id="mmc2">M/M/C<br>
                                     <button type="button" id="mmc"><span class="dot"></button>
+                                    <span class="tooltiptext">Single queue, 1 server</span>
                                 </div>
                             </div>
                             <div class="grid-item">
-                                <div class="model">M/M/Inf<br>
+                                <div class="model tooltip" id="mmi2">M/M/Inf<br>
                                     <button type="button" id="mmi"><span class="dot"></button>
+                                    <span class="tooltiptext">At least one server per customer</span>
                                 </div>
                             </div>
                             <div class="grid-item">
-                                <div class="model">M/M/C/K<br>
+                                <div class="model tooltip" id="mmck2">M/M/C/K<br>
                                     <button type="button" id="mmck"><span class="dot"></span></button>
+                                    <span class="tooltiptext">Queue can only hold K customers</span>
                                 </div>
                             </div>
                             <div class="grid-item">
-                                <div class="model">M/M/C/*/M<br>
+                                <div class="model tooltip" id="mmcm2">M/M/C/*/M<br>
                                     <button type="button" id="mmcm"><span class="dot"></span></button>
+                                    <span class="tooltiptext">Only M customers can use the server</span>
                                 </div>
                             </div>
-                        </div>
-                        <div class="info">
-                            <div>M/M/1 - Single queue, 1 server.</div>
-                            <div>M/M/Inf - At least one server per customer.</div>
-                            <div>M/M/C/K - Queue can only hold K customers.</div>
-                            <div>M/M/C/*/M - Only M customers can use the server.</div>
                         </div>
                     </div>
                 </div><br>
                 <div class="module-border-wrap">
                     <div class="module">
                         <h2>2. Input Values</h2>
-                        <div id="dynamic_input">
-
-                        </div>
+                        <div id="dynamic_input"></div>
                     </div>
                 </div><br><br>
                 <button class="myBtn" id="calcBtn" type="button"><strong>Calculate</strong></button>
@@ -70,18 +66,7 @@
                 </div><br>
                 <div class="module-border-wrap">
                     <div class="module">
-                        <h3>The Utilization</h3>
-                        <h2 class="indent">ρ = <span id="res1" style="color: lightgreen;"></span></h2>
-                        <h3>The Expected number of jobs in the system</h3>
-                        <h2 class="indent">L = <span id="res2" style="color: lightgreen;"></span></h2>
-                        <h3>The Expected number of jobs in the queue</h3>
-                        <h2 class="indent">Lq = <span id="res3" style="color: lightgreen;"></span></h2>
-                        <h3>The Average time spent in the system</h3>
-                        <h2 class="indent">W = <span id="res4" style="color: lightgreen;"></span></h2>
-                        <h3>The Average time spent waiting in the queue</h3>
-                        <h2 class="indent">Wq = <span id="res5" style="color: lightgreen;"></span></h2>
-                        <h3>Probability of idle server</h3>
-                        <h2 class="indent">P(0) = <span id="res6" style="color: lightgreen;"></span></h2>
+                        <div id="dynamic_result"></div>
                     </div>
                 </div><br><br>
                 <button class="myBtn" id="grpBtn" type="button"><strong>See Graphically</strong></button>
