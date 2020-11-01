@@ -8,7 +8,7 @@ var mmiBtn = document.getElementById('mmi');
 var mmckBtn = document.getElementById('mmck');
 var mmcmBtn = document.getElementById('mmcm');
 var type;
-
+/* 
 function create(htmlStr){
     var frag = document.createDocumentFragment(),
         temp = document.createElement('div');
@@ -18,14 +18,14 @@ function create(htmlStr){
     }
     return frag;
 }
-
+*/
 var inputEl = document.getElementById('dynamic_input');
 var resultEl = document.getElementById('dynamic_result');
 
 function factorial(num){
-    if (num === 0 || num === 1)
+    if(num === 0 || num === 1)
         return 1;
-    for (var i = num - 1; i >= 1; i--) {
+    for(var i = num-1; i>=1; i--){
         num *= i;
     }
     return num;
