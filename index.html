@@ -23,37 +23,39 @@
                             <div class="grid-item">
                                 <div class="model tooltip" id="mmc2">M/M/C<br>
                                     <button type="button" id="mmc"><span class="dot"></button>
-                                    <span class="tooltiptext">Single queue, 1 server</span>
+                                    <span class="tooltiptext">Single queue, C servers</span>
                                 </div>
                             </div>
                             <div class="grid-item">
                                 <div class="model tooltip" id="mmi2">M/M/Inf<br>
                                     <button type="button" id="mmi"><span class="dot"></button>
-                                    <span class="tooltiptext">At least one server per customer</span>
+                                    <span class="tooltiptext">Infinite number of servers</span>
                                 </div>
                             </div>
                             <div class="grid-item">
                                 <div class="model tooltip" id="mmck2">M/M/C/K<br>
                                     <button type="button" id="mmck"><span class="dot"></span></button>
-                                    <span class="tooltiptext">Queue can only hold K customers</span>
+                                    <span class="tooltiptext">Queue can hold maximum K customers at any time(Extras will be lost)</span>
                                 </div>
                             </div>
                             <div class="grid-item">
                                 <div class="model tooltip" id="mmcm2">M/M/C/*/M<br>
                                     <button type="button" id="mmcm"><span class="dot"></span></button>
-                                    <span class="tooltiptext">Only M customers can use the server</span>
+                                    <span class="tooltiptext">Population that can join queue is limited (M)</span>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div><br>
-                <div class="module-border-wrap">
-                    <div class="module">
-                        <h2>2. Input Values</h2>
-                        <div id="dynamic_input"></div>
-                    </div>
-                </div><br><br>
-                <button class="myBtn" id="calcBtn" type="button"><strong>Calculate</strong></button>
+                <div class="box" id="calcbutton">
+                    <div class="module-border-wrap">
+                        <div class="module">
+                            <h2>2. Input Values</h2>
+                            <div id="dynamic_input"></div>
+                        </div>
+                    </div><br><br>
+                      <button class="myBtn" id="calcBtn" type="button"><strong>Calculate</strong></button>
+                </div>
             </div>
 
             <div class="separator"></div>
@@ -62,6 +64,19 @@
                 <div class="module-border-wrap">
                     <div class="module head">
                         <h1>Result</h1>
+                        <select id="decimals" class="form-control inline" style="width:115px;">
+                            <option value="0">0 decimals</option>
+                            <option value="1">1 decimals</option>
+                            <option value="2">2 decimals</option>
+                            <option value="3">3 decimals</option>
+                            <option value="4" selected="selected">4 decimals</option>
+                            <option value="5">5 decimals</option>
+                            <option value="6">6 decimals</option>
+                            <option value="7">7 decimals</option>
+                            <option value="8">8 decimals</option>
+                            <option value="9">9 decimals</option>
+                        </select>
+                        <button id="decBtn" type="button"><strong>ReEvaluate</strong></button>
                     </div>
                 </div><br>
                 <div class="module-border-wrap">
