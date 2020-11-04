@@ -8,7 +8,7 @@ var mmiBtn = document.getElementById('mmi');
 var mmckBtn = document.getElementById('mmck');
 var mmcmBtn = document.getElementById('mmcm');
 var type;
-
+var probBtn = document.getElementById('probBtn');
 
 
 //added here modify as you want
@@ -49,7 +49,7 @@ function combination(n,r){
 function selectMMC(){
     console.log("Selecting MMC model...");
     type = 'mmc';
-    inputEl.innerHTML = '<div class="grid-container"><div class="grid-item"><p>&lambda; (no units): <input type="number" id="lamb"></p></div><div class="grid-item"><p>&mu; (no units): <input type="number" id="mu"></p></div><div class="grid-item"><p>C (no units): <input type="number" value=1 id="c"></p></div></div>';
+    inputEl.innerHTML = '<div class="grid-container"><div class="model tooltip"><p>&lambda; (no units): <input type="number" value=60 id="lamb"></p><span class="tooltiptext">the arrival rate (the expected time between each customer arriving, e.g. 30 seconds)</span></div><div class="model tooltip"><p>&mu; (no units): <input type="number" value=75 id="mu"></p><span class="tooltiptext">the reciprocal of the mean service time (the expected number of consecutive service completions per the same unit time, e.g. per 30 seconds)</span></div><div class="model tooltip"><p>C (no units): <input type="number" value=1 id="c"></p><span class="tooltiptext">Total Number of Servers serving customers</span></div></div>';
     mmcBtn.innerHTML = '<span class="dot-checked"></span>';
     mmiBtn.innerHTML = '<span class="dot"></span>';
     mmckBtn.innerHTML = '<span class="dot"></span>';
@@ -58,7 +58,7 @@ function selectMMC(){
 function selectMMI(){
     console.log("Selecting MMInf model...");
     type= 'mminf';
-    inputEl.innerHTML = '<div class="grid-container"><div class="model tooltip"><p>&lambda; (no units): <input type="number" id="lamb"></p><span class="tooltiptext">the arrival rate (the expected time between each customer arriving, e.g. 30 seconds)</span></div><div class="model tooltip"><p>&mu; (no units): <input type="number" id="mu"></p><span class="tooltiptext">the reciprocal of the mean service time (the expected number of consecutive service completions per the same unit time, e.g. per 30 seconds)</span></div></div>';
+    inputEl.innerHTML = '<div class="grid-container"><div class="model tooltip"><p>&lambda; (no units): <input type="number" value=60 id="lamb"></p><span class="tooltiptext">the arrival rate (the expected time between each customer arriving, e.g. 30 seconds)</span></div><div class="model tooltip"><p>&mu; (no units): <input type="number" value=75 id="mu"></p><span class="tooltiptext">the reciprocal of the mean service time (the expected number of consecutive service completions per the same unit time, e.g. per 30 seconds)</span></div></div>';
     mmcBtn.innerHTML = '<span class="dot"></span>';
     mmiBtn.innerHTML = '<span class="dot-checked"></span>';
     mmckBtn.innerHTML = '<span class="dot"></span>';
@@ -67,7 +67,7 @@ function selectMMI(){
 function selectMMCK(){
     console.log("Selecting MMCK model...");
     type = 'mmck';
-    inputEl.innerHTML = '<div class="grid-container"><div class="grid-item"><p>&lambda; (no units): <input type="number" id="lamb"></p></input></div><div class="grid-item"><p>&mu; (no units): <input type="number" id="mu"></p></div><div class="grid-item"><p>C (no units): <input type="number" id="c"></p></div><div class="grid-item"><p>K (no units): <input type="number" id="k"></p></div></div>';
+    inputEl.innerHTML = '<div class="grid-container"><div class="model tooltip"><p>&lambda; (no units): <input type="number" value=60 id="lamb"></p><span class="tooltiptext">the arrival rate (the expected time between each customer arriving, e.g. 30 seconds)</span></div><div class="model tooltip"><p>&mu; (no units): <input type="number" value=75 id="mu"></p><span class="tooltiptext">the reciprocal of the mean service time (the expected number of consecutive service completions per the same unit time, e.g. per 30 seconds)</span></div><div class="model tooltip"><p>C (no units): <input type="number" value=1 id="c"></p><span class="tooltiptext">Total Number of Servers serving customers</span></div><div class="model tooltip"><p>K (no units): <input type="number" value=50 id="k"></p><span class="tooltiptext">Maximum number of customers a system can hold</span></div></div>';
     mmcBtn.innerHTML = '<span class="dot"></span>';
     mmiBtn.innerHTML = '<span class="dot"></span>';
     mmckBtn.innerHTML = '<span class="dot-checked"></span>';
@@ -76,7 +76,7 @@ function selectMMCK(){
 function selectMMCM(){
     console.log("Selecting MMC*M model...");
     type = 'mmc*m';
-    inputEl.innerHTML = '<div class="grid-container"><div class="grid-item"><p>&lambda; (no units): <input type="number" id="lamb"></p></div><div class="grid-item"><p>&mu; (no units): <input type="number" id="mu"></p></div><div class="grid-item"><p>C (no units): <input type="number" id="c"></p></div><div class="grid-item"><p>M (no units): <input type="number" id="m"></p></div></div>'
+    inputEl.innerHTML = '<div class="grid-container"><div class="model tooltip"><p>&lambda; (no units): <input type="number" value=60 id="lamb"></p><span class="tooltiptext">the arrival rate (the expected time between each customer arriving, e.g. 30 seconds)</span></div><div class="model tooltip"><p>&mu; (no units): <input type="number" value=75 id="mu"></p><span class="tooltiptext">the reciprocal of the mean service time (the expected number of consecutive service completions per the same unit time, e.g. per 30 seconds)</span></div><div class="model tooltip"><p>C (no units): <input type="number" value=1 id="c"></p><span class="tooltiptext">Total Number of Servers serving customers</span></div><div class="model tooltip"><p>M (no units): <input type="number" value=100 id="m"></p><span class="tooltiptext">Limited population size being served by a system</span></div></div>'
     mmcBtn.innerHTML = '<span class="dot"></span>';
     mmiBtn.innerHTML = '<span class="dot"></span>';
     mmckBtn.innerHTML = '<span class="dot"></span>';
@@ -106,44 +106,54 @@ calcBtn.addEventListener('click', ()=>{
     var deciEl= document.getElementById('decimals')
     var lamb = parseInt(lambEl.value);  //lamda value
     var mu = parseInt(muEl.value);  //mu value
-    var decimal= parseInt(deciEl.value)
+    var decimal= parseInt(deciEl.value);
     switch(type) {
       case 'mmc':
-            var c = parseInt(cEl.value); //c value
+            var c = parseInt(cEl.value) //c value
+            var Pn;
             console.log("MMC");
             if(lamb > c*mu){
               alert("λ must be smaller than c*μ otherwise queue will increse indefinitely! ");
             }else{
               let temp = 0;
-              var rho = lamb/mu;
+              let r = lamb/mu;
+              var rho = r/c;
               for(let n=0; n<=c-1; n++){
                 temp += ((rho**n)/factorial(n));
               }
-              function prob(n){ //used to calculate probabilities
-                  if (n<c){
-                    return (P0*(rho**n))/factorial(n);
-                  }
-                  else{
-                    return ((P0*(rho**n))/(c**(n-c))*factorial(c));
-                  }
-              }
               var P0 = 1/(temp + (rho**c)/(factorial(c)*(1- rho/c)));
+              function prob(n){
+                  if (!n) {
+                      return P0;
+                  } else if (n >= 1 && n <= c) {
+                      return (Math.pow(r, n) * P0) / factorial(n);
+                  } else if (n > c) {
+                      return (P0 * Math.pow(rho, n) * Math.pow(c, c)) / factorial(c);
+                  } else return null;
+              }
+
               var util = rho/c;
               var Lq = ((P0*(lamb**(c+1))*mu)/((factorial(c-1))*(mu**c)*((c*mu-lamb)**2)));
-              var Ls = Lq + (lamb/mu);
+              var L = Lq + (lamb/mu);
               var Lw = ((c*mu)/(c*mu - lamb));
-              var Ws = Ls/lamb;
+              var W = L/lamb;
               var Wq = Lq/lamb;
+              probBtn.addEventListener('click', ()=>{
+                var nEl = document.getElementById('probcalcn');
+                var n = parseInt(nEl.value);
+                console.log(n);
+                let Pn = prob(n);
+                console.log(Pn);
+                document.getElementById('Pn').innerText = Pn.toFixed(3);
+              });
             }
 
-            resultEl.innerHTML = '<h3>The Utilization</h3><h2 class="indent">&rho; = <span id="res1" style="color: lightgreen;"></span></h2><h3>The Expected number of jobs in the system</h3><h2 class="indent">Ls = <span id="res2" style="color: lightgreen;"></span></h2><h3>The Expected number of jobs in the queue</h3><h2 class="indent">Lq = <span id="res3" style="color: lightgreen;"></span></h2><h3>The Average time spent in the system</h3><h2 class="indent">Ws = <span id="res4" style="color: lightgreen;"></span></h2><h3>The Average time spent waiting in the queue</h3><h2 class="indent">Wq = <span id="res5" style="color: lightgreen;"></span></h2><h3>Probability of idle server</h3><h2 class="indent">P(0) = <span id="res6" style="color: lightgreen;"></span></h2>';
+            resultEl.innerHTML = '<h3>The Utilization</h3><h2 class="indent">&rho; = <span id="res1" style="color: lightgreen;"></span></h2><h3>The Expected number of jobs in the system</h3><h2 class="indent">L = <span id="res2" style="color: lightgreen;"></span></h2><h3>The Expected number of jobs in the queue</h3><h2 class="indent">Lq = <span id="res3" style="color: lightgreen;"></span></h2><h3>The Average time spent in the system</h3><h2 class="indent">W = <span id="res4" style="color: lightgreen;"></span></h2><h3>The Average time spent waiting in the queue</h3><h2 class="indent">Wq = <span id="res5" style="color: lightgreen;"></span></h2><h3>Probability of idle server</h3>';
             document.getElementById('res1').innerText = (util).toFixed(decimal);
-            document.getElementById('res2').innerText = (Ls).toFixed(decimal);
+            document.getElementById('res2').innerText = (L).toFixed(decimal);
             document.getElementById('res3').innerText = (Lq).toFixed(decimal);
-            document.getElementById('res4').innerText = (Ws).toFixed(decimal);
+            document.getElementById('res4').innerText = (W).toFixed(decimal);
             document.getElementById('res5').innerText = (Wq).toFixed(decimal);
-            document.getElementById('res6').innerText = (P0).toFixed(decimal);
-
 	        break;
 
       case 'mminf':
@@ -151,16 +161,24 @@ calcBtn.addEventListener('click', ()=>{
             var util = 0;
             var r= lamb/mu;
             var p0 = 0;
-            var Ls = r;
+            var L = r;
             var Lq = 0;
-            var Ws = Ls/lamb;
+            var W = L/lamb;
             var Wq = 0;
             function prob(n){
-              return Math.pow(r, n) * Math.exp(r) / factorial(n);
+              return Math.pow(r, n) * Math.exp(-r) / factorial(n);
             }
-            resultEl.innerHTML = '<h3>The Expected number of jobs in the system</h3><h2 class="indent">Ls = <span id="res2" style="color: lightgreen;"></span></h2><h3>The Average time spent in the system</h3><h2 class="indent">Ws = <span id="res4" style="color: lightgreen;"></span></h2>';
-            document.getElementById('res2').innerText = (Ls).toFixed(decimal);
-            document.getElementById('res4').innerText = (Ws).toFixed(decimal);
+            probBtn.addEventListener('click', ()=>{
+                var nEl = document.getElementById('probcalcn');
+                var n = parseInt(nEl.value);
+                console.log(n);
+                let Pn = prob(n);
+                console.log(Pn);
+                document.getElementById('Pn').innerText = Pn.toFixed(3);
+            });
+            resultEl.innerHTML = '<h3>The Expected number of jobs in the system</h3><h2 class="indent">L = <span id="res2" style="color: lightgreen;"></span></h2><h3>The Average time spent in the system</h3><h2 class="indent">W = <span id="res4" style="color: lightgreen;"></span></h2>';
+            document.getElementById('res2').innerText = (L).toFixed(decimal);
+            document.getElementById('res4').innerText = (W).toFixed(decimal);
 
             break;
 
@@ -172,7 +190,7 @@ calcBtn.addEventListener('click', ()=>{
               alert("λ must be smaller than c*μ otherwise queue will increse indefinitely! ");
             }else{
               var i = 0;
-              var P0, Ws, Wk,  Lq,Ls,Pk;
+              var P0, W, Wk,  Lq,L,Pk;
               var rho = lamb / (c * mu);
               var util = rho;
               var r = lamb / mu;
@@ -196,12 +214,12 @@ calcBtn.addEventListener('click', ()=>{
               } else {
                   Lq = P0 * Math.pow(c, c) * (k - c) * (k - c + 1) / (2 * factorial(c));
               }
-              //Ls calc down
+              //L calc down
               for (i = 0; i <= c - 1; i++) {
-                  Ls = (c - i) * Math.pow(rho * c, i) / factorial(i);
+                  L = (c - i) * Math.pow(rho * c, i) / factorial(i);
               }
-              Ls *= -P0;
-              Ls += Lq + c;
+              L *= -P0;
+              L += Lq + c;
               //Pk calc
               if (k === 0) {
                   Pk = P0;
@@ -211,8 +229,8 @@ calcBtn.addEventListener('click', ()=>{
                   Pk = Math.pow(r, k) * P0 / (factorial(c) * Math.pow(c, k - c));
               }
               lambp = lamb * (1 - Pk);
-              Ws = Ls / lambp;
-              Wq = Ws - 1 / mu;
+              W = L / lambp;
+              Wq = W - 1 / mu;
 
               function prob(n){
               if (n === 0) {
@@ -223,16 +241,22 @@ calcBtn.addEventListener('click', ()=>{
                   return Math.pow(r, n) * P0 / (factorial(c) * Math.pow(c, n - c));
               }
               }
+
+            probBtn.addEventListener('click', ()=>{
+              var nEl = document.getElementById('probcalcn');
+              var n = parseInt(nEl.value);
+              console.log(n);
+              let Pn = prob(n);
+              console.log(Pn);
+              document.getElementById('Pn').innerText = Pn.toFixed(3);
+            });
             }
-
-            resultEl.innerHTML = '';resultEl.innerHTML = '<h3>The Utilization</h3><h2 class="indent">&rho; = <span id="res1" style="color: lightgreen;"></span></h2><h3>The Expected number of jobs in the system</h3><h2 class="indent">Ls = <span id="res2" style="color: lightgreen;"></span></h2><h3>The Expected number of jobs in the queue</h3><h2 class="indent">Lq = <span id="res3" style="color: lightgreen;"></span></h2><h3>The Average time spent in the system</h3><h2 class="indent">Ws = <span id="res4" style="color: lightgreen;"></span></h2><h3>The Average time spent waiting in the queue</h3><h2 class="indent">Wq = <span id="res5" style="color: lightgreen;"></span></h2><h3>Probability of idle server</h3><h2 class="indent">P(0) = <span id="res6" style="color: lightgreen;"></span></h2>';
+            resultEl.innerHTML = '';resultEl.innerHTML = '<h3>The Utilization</h3><h2 class="indent">&rho; = <span id="res1" style="color: lightgreen;"></span></h2><h3>The Expected number of jobs in the system</h3><h2 class="indent">L = <span id="res2" style="color: lightgreen;"></span></h2><h3>The Expected number of jobs in the queue</h3><h2 class="indent">Lq = <span id="res3" style="color: lightgreen;"></span></h2><h3>The Average time spent in the system</h3><h2 class="indent">W = <span id="res4" style="color: lightgreen;"></span></h2><h3>The Average time spent waiting in the queue</h3><h2 class="indent">Wq = <span id="res5" style="color: lightgreen;"></span></h2>';
             document.getElementById('res1').innerText = (util).toFixed(decimal);
-            document.getElementById('res2').innerText = (Ls).toFixed(decimal);
+            document.getElementById('res2').innerText = (L).toFixed(decimal);
             document.getElementById('res3').innerText = (Lq).toFixed(decimal);
-            document.getElementById('res4').innerText = (Ws).toFixed(decimal);
+            document.getElementById('res4').innerText = (W).toFixed(decimal);
             document.getElementById('res5').innerText = (Wq).toFixed(decimal);
-            document.getElementById('res6').innerText = (P0).toFixed(decimal);
-
             break;
       case 'mmc*m': //Done
             console.log("MMc*m");
@@ -245,7 +269,7 @@ calcBtn.addEventListener('click', ()=>{
               var P0= "We dont do that here";
               var r = lamb / mu;
               var util= r;
-              var L, Ls, Lq, fakeP0, Ws, Wq;
+              var L, Lq, fakeP0, W, Wq;
               var i=0, Po_1=0,Px=0;
               for (i = 0, Po_1 = 0; i < c; i++) {
                     Po_1 += combination(m, i) * Math.pow(r, i);
@@ -255,46 +279,55 @@ calcBtn.addEventListener('click', ()=>{
                 }
                 fakeP0 = 1 / (Po_1 + Px);
 
-                Ls = 0; //Find Ls
+                L = 0; //Find L
                 for (i = 0; i <= c - 1; i++) {
-                    Ls += i * combination(m, i) * Math.pow(r, i);
+                    L += i * combination(m, i) * Math.pow(r, i);
                 }
                 for (i = c; i <= m; i++) {
-                    Ls += i * combination(m, i) * Math.pow(r, i) * factorial(i) / (Math.pow(c, i - c) * factorial(c));
+                    L += i * combination(m, i) * Math.pow(r, i) * factorial(i) / (Math.pow(c, i - c) * factorial(c));
                 }
-                Ls *= fakeP0;
+                L *= fakeP0;
                 Lq = 0; //Find Lq
                 for (i = 0; i <= c - 1; i++) {
                     Lq += (c - i) * combination(m, i) * Math.pow(r, i);
                 }
                 Lq *= fakeP0;
-                Lq = Lq + Ls - c;
-                Ws = Ls / (lamb * (m - Ls));
-                Wq = Lq / (lamb * (m - Ls));
-                var Lambdap = mu * (Ls - Lq);
+                Lq = Lq + L - c;
+                W = L / (lamb * (m - L));
+                Wq = Lq / (lamb * (m - L));
+                var Lambdap = mu * (L - Lq);
 
               function prob(n){
                 if (0 <= n && n < c) {
-                    Pn = combination(m, n) * Math.pow(r, n) * fakeP0;
+                    return combination(m, n) * Math.pow(r, n) * fakeP0;
                 } else if (n >= c && n <= m) {
-                    Pn = combination(m, n) * factorial(n) * Math.pow(r, n) * fakeP0 / (Math.pow(c, n - c) * factorial(c));
+                    return combination(m, n) * factorial(n) * Math.pow(r, n) * fakeP0 / (Math.pow(c, n - c) * factorial(c));
                 } else {
-                    Pn = 0;
+                    return 0;
                 }
               }
-
+              probBtn.addEventListener('click', ()=>{
+                var nEl = document.getElementById('probcalcn');
+                var n = parseInt(nEl.value);
+                console.log(n);
+                let Pn = prob(n);
+                console.log(Pn);
+                document.getElementById('Pn').innerText = Pn.toFixed(3);
+              });
             }
 
-            resultEl.innerHTML = '<h3>The Expected number of jobs in the system</h3><h2 class="indent">Ls = <span id="res2" style="color: lightgreen;"></span></h2><h3>The Expected number of jobs in the queue</h3><h2 class="indent">Lq = <span id="res3" style="color: lightgreen;"></span></h2><h3>The Average time spent in the system</h3><h2 class="indent">Ws = <span id="res4" style="color: lightgreen;"></span></h2><h3>The Average time spent waiting in the queue</h3><h2 class="indent">Wq = <span id="res5" style="color: lightgreen;"></span></h2>';
-            document.getElementById('res2').innerText = (Ls).toFixed(decimal);
+            resultEl.innerHTML = '<h3>The Expected number of jobs in the system</h3><h2 class="indent">L = <span id="res2" style="color: lightgreen;"></span></h2><h3>The Expected number of jobs in the queue</h3><h2 class="indent">Lq = <span id="res3" style="color: lightgreen;"></span></h2><h3>The Average time spent in the system</h3><h2 class="indent">W = <span id="res4" style="color: lightgreen;"></span></h2><h3>The Average time spent waiting in the queue</h3><h2 class="indent">Wq = <span id="res5" style="color: lightgreen;"></span></h2>';
+            document.getElementById('res2').innerText = (L).toFixed(decimal);
             document.getElementById('res3').innerText = (Lq).toFixed(decimal);
-            document.getElementById('res4').innerText = (Ws).toFixed(decimal);
+            document.getElementById('res4').innerText = (W).toFixed(decimal);
             document.getElementById('res5').innerText = (Wq).toFixed(decimal);
 	        break;
     }
         window.location.href = "#result";
     }
 );  //removed } from here
+
+
 
 upBtn.addEventListener('click', ()=>{
     window.location.href = "#top";
