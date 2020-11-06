@@ -1,3 +1,7 @@
+.container{
+    margin-left: 60px;
+}
+
 .grid-container{
     display: grid;
     grid-template-columns: auto auto auto auto;
@@ -115,7 +119,7 @@ html{
   
 .tooltip .tooltiptext{
     visibility: hidden;
-    width: 120px;
+    width: auto;
     background-color: #555;
     color: #fff;
     font-size: small;
@@ -148,3 +152,41 @@ html{
 }
 
 /*End of Tooltip*/
+
+/* Start of SideNavbar */
+
+.sidebar{
+    height: 100%;
+    width: 160px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    padding-top: 16px;
+}
+
+.sidebar a{
+    padding: 8px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #9a9a9a;
+    display: block;
+}
+
+.sidebar a:hover{
+    color: #f1f1f1;
+}
+
+.active{
+    background: linear-gradient(to right, red, purple);
+    color: #fff!important;
+}
+
+@media screen and (max-height: 450px) {
+    .sidebar {padding-top: 15px;}
+    .sidebar a {font-size: 18px;}
+}
+
+/* End of SideNavbar */

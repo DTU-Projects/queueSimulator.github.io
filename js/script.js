@@ -18,8 +18,6 @@ decBtn.addEventListener('click', ()=>{
 });
 
 
-
-
 /*
 function create(htmlStr){
     var frag = document.createDocumentFragment(),
@@ -43,7 +41,7 @@ function factorial(num){
     return num;
 }
 function combination(n,r){
-  return (factorial(n)/(factorial(r)*factorial(n-r)));
+    return (factorial(n)/(factorial(r)*factorial(n-r)));
 }
 
 function selectMMC(){
@@ -65,7 +63,7 @@ function selectMMI(){
     mmcmBtn.innerHTML = '<span class="dot"></span>';
 }
 function selectMMCK(){
-    console.log("Selecting MMCK model...");
+    console.log("Selecting MMCK model...")
     type = 'mmck';
     inputEl.innerHTML = '<div class="grid-container"><div class="model tooltip"><p>&lambda; (no units): <input type="number" value=60 id="lamb"></p><span class="tooltiptext">the arrival rate (the expected time between each customer arriving, e.g. 30 seconds)</span></div><div class="model tooltip"><p>&mu; (no units): <input type="number" value=75 id="mu"></p><span class="tooltiptext">the reciprocal of the mean service time (the expected number of consecutive service completions per the same unit time, e.g. per 30 seconds)</span></div><div class="model tooltip"><p>C (no units): <input type="number" value=1 id="c"></p><span class="tooltiptext">Total Number of Servers serving customers</span></div><div class="model tooltip"><p>K (no units): <input type="number" value=50 id="k"></p><span class="tooltiptext">Maximum number of customers a system can hold</span></div></div>';
     mmcBtn.innerHTML = '<span class="dot"></span>';
@@ -259,7 +257,6 @@ calcBtn.addEventListener('click', ()=>{
             document.getElementById('res5').innerText = (Wq).toFixed(decimal);
             break;
       case 'mmc*m': //Done
-            console.log("MMc*m");
             var c = parseInt(cEl.value); //c value
             var m = parseInt(mEl.value); //k value
             console.log("MMC*m");

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <title>Calculator</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/styles.css" type="text/css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    </head>
+
+    <body>
+        
+        <nav>    
+            <div class="sidebar">
+                <li><a href="index.html"><i class="fa fa-fw fa-home"></i> Home</a></li>     
+                <li><a href="#" class="active"><i class="fa fa-fw fa-calculator"></i> Calculator</a></li>   
+                <li><a href="application.html"><i class="fa fa-fw fa-cogs"></i> Applications</a></li>
+                <li><a href="about.html"><i class="fa fa-fw fa-info"></i> About</a></li>
+            </div>
+        </nav>
+
+        <div class="container">
+
+            <div class="box" id="top">
+
+                <div class="module-border-wrap">
+                    <div class="module head">
+                        <h1>Queueing Theory Calculator</h1>
+                    </div>
+                </div><br>
+                <div class="module-border-wrap">
+                    <div class="module">
+                        <h2>1. Choose the Queueing Model</h2>
+                        <div class="grid-container">
+                            <div class="grid-item">
+                                <div class="model tooltip" id="mmc2">M/M/C<br>
+                                    <button type="button" id="mmc"><span class="dot"></button>
+                                    <span class="tooltiptext">Single queue, C servers</span>
+                                </div>
+                            </div>
+                            <div class="grid-item">
+                                <div class="model tooltip" id="mmi2">M/M/Inf<br>
+                                    <button type="button" id="mmi"><span class="dot"></button>
+                                    <span class="tooltiptext">Infinite number of servers</span>
+                                </div>
+                            </div>
+                            <div class="grid-item">
+                                <div class="model tooltip" id="mmck2">M/M/C/K<br>
+                                    <button type="button" id="mmck"><span class="dot"></span></button>
+                                    <span class="tooltiptext">Queue can hold maximum K customers at any time (extras will be lost)</span>
+                                </div>
+                            </div>
+                            <div class="grid-item">
+                                <div class="model tooltip" id="mmcm2">M/M/C/*/M<br>
+                                    <button type="button" id="mmcm"><span class="dot"></span></button>
+                                    <span class="tooltiptext">Population that can join queue is limited (M)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><br>
+                <div class="box" id="calcbutton">
+                    <div class="module-border-wrap">
+                        <div class="module">
+                            <h2>2. Input Values</h2>
+                            <div id="dynamic_input"></div>
+                        </div>
+                    </div><br><br>
+                      <button class="myBtn" id="calcBtn" type="button"><strong>Calculate</strong></button>
+                </div>
+            </div>
+
+            <div class="separator"></div>
+
+            <div class="box" id="result">
+                <div class="module-border-wrap">
+                    <div class="module head">
+                        <h1>Result</h1>
+                        <select id="decimals" class="form-control inline" style="width:115px;">
+                            <option value="0">0 decimals</option>
+                            <option value="1">1 decimals</option>
+                            <option value="2">2 decimals</option>
+                            <option value="3">3 decimals</option>
+                            <option value="4" selected="selected">4 decimals</option>
+                            <option value="5">5 decimals</option>
+                            <option value="6">6 decimals</option>
+                            <option value="7">7 decimals</option>
+                            <option value="8">8 decimals</option>
+                            <option value="9">9 decimals</option>
+                        </select>
+                        <button id="decBtn" type="button"><strong>ReEvaluate</strong></button>
+                    </div>
+                </div><br>
+                <div class="module-border-wrap">
+                    <div class="module">
+                        <div id="dynamic_result"></div>
+
+                      (Probability that number of customers in system is
+                      <input id="probcalcn" type="text" style="width:30px;" value="0">
+                      ) =
+                      <strong>
+                        <span id="Pn">0</span>
+                      </strong>
+                      <button id="probBtn" type="button">Find</strong></button>
+                    </div>
+                </div><br><br>
+                <button class="myBtn" id="grpBtn" type="button"><strong>See Graphically</strong></button>
+            </div>
+
+            <div class="separator"></div>
+
+            <div class="box" id="graph">
+
+                <div id="graph" class="module-border-wrap">
+                    <div class="module head">
+                        <h1>Graphs</h1>
+                    </div>
+                </div><br>
+                <div class="module-border-wrap">
+                    <div class="module">
+                        <h3>Graphs goes here</h3>
+                        <h1 style="color: lightgreen;">COMING SOON</h1>
+                    </div>
+                </div><br><br>
+                <button class="myBtn" id="upBtn" type="button">Back to top &uarr;</button>
+            </div>
+
+            <div class="separator"></div>
+
+            </div>
+        </div>
+        
+        <script src="js/script.js" type="text/javascript"></script>
+    </body>
+
+</html>
