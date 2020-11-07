@@ -43,7 +43,20 @@ function factorial(num){
 function combination(n,r){
     return (factorial(n)/(factorial(r)*factorial(n-r)));
 }
-
+function get_graph(Lq, prob){
+  var counter, j=0;
+  let points=[];
+  let values=[];
+  var max= Math.max(1.5*Lq, 25);
+  for(counter=0; counter<=max; counter++){
+    if (prob(counter)>=0.005){
+      points[j]= counter;
+      values[j]= prob(counter);
+      j++;
+    }
+  }
+  return [points, values];
+}
 function selectMMC(){
     console.log("Selecting MMC model...");
     type = 'mmc';
@@ -73,8 +86,8 @@ function selectMMCK(){
 }
 function selectMMCM(){
     console.log("Selecting MMC*M model...");
-    type = 'mmc*m';
-    inputEl.innerHTML = '<div class="grid-container"><div class="model tooltip"><p>&lambda; (no units): <input type="number" value=60 id="lamb"></p><span class="tooltiptext">the arrival rate (the expected time between each customer arriving, e.g. 30 seconds)</span></div><div class="model tooltip"><p>&mu; (no units): <input type="number" value=75 id="mu"></p><span class="tooltiptext">the reciprocal of the mean service time (the expected number of consecutive service completions per the same unit time, e.g. per 30 seconds)</span></div><div class="model tooltip"><p>C (no units): <input type="number" value=1 id="c"></p><span class="tooltiptext">Total Number of Servers serving customers</span></div><div class="model tooltip"><p>M (no units): <input type="number" value=100 id="m"></p><span class="tooltiptext">Limited population size being served by a system</span></div></div>'
+    type = 'mmcnn';
+    inputEl.innerHTML = '<div class="grid-container"><div class="model tooltip"><p>&lambda; (no units): <input type="number" value=60 id="lamb"></p><span class="tooltiptext">the arrival rate (the expected time between each customer arriving, e.g. 30 seconds)</span></div><div class="model tooltip"><p>&mu; (no units): <input type="number" value=75 id="mu"></p><span class="tooltiptext">the reciprocal of the mean service time (the expected number of consecutive service completions per the same unit time, e.g. per 30 seconds)</span></div><div class="model tooltip"><p>C (no units): <input type="number" value=1 id="c"></p><span class="tooltiptext">Total Number of Servers serving customers</span></div><div class="model tooltip"><p>N (no units): <input type="number" value=100 id="m"></p><span class="tooltiptext">Limited population size being served by a system</span></div></div>'
     mmcBtn.innerHTML = '<span class="dot"></span>';
     mmiBtn.innerHTML = '<span class="dot"></span>';
     mmckBtn.innerHTML = '<span class="dot"></span>';
@@ -93,14 +106,13 @@ document.getElementById('mmck2').addEventListener('click', selectMMCK);
 mmcmBtn.addEventListener('click', selectMMCM);
 document.getElementById('mmcm2').addEventListener('click', selectMMCM);
 
-
 calcBtn.addEventListener('click', ()=>{
 
     var lambEl = document.getElementById('lamb');
     var muEl = document.getElementById('mu');
     var cEl = document.getElementById('c');
     var kEl = document.getElementById('k');
-    var mEl = document.getElementById('m');
+    var mEl = document.getElementById('m');// This m is N from input
     var deciEl= document.getElementById('decimals')
     var lamb = parseInt(lambEl.value);  //lamda value
     var mu = parseInt(muEl.value);  //mu value
@@ -144,7 +156,20 @@ calcBtn.addEventListener('click', ()=>{
                 console.log(Pn);
                 document.getElementById('Pn').innerText = Pn.toFixed(3);
               });
-            }
+                var counter, j=0;
+                let points=[];
+                let values=[];
+                var max= Math.max(1.5*Lq, 25);
+                for(counter=0; counter<=max; counter++){
+                  if (prob(counter)>=0.005){
+                    points[j]= counter;
+                    values[j]= prob(counter);
+                    j++;
+                  }
+                }
+                points = get_graph(Lq,prob);
+                console.log(points);
+          }
 
             resultEl.innerHTML = '<h3>The Utilization</h3><h2 class="indent">&rho; = <span id="res1" style="color: lightgreen;"></span></h2><h3>The Expected number of jobs in the system</h3><h2 class="indent">L = <span id="res2" style="color: lightgreen;"></span></h2><h3>The Expected number of jobs in the queue</h3><h2 class="indent">Lq = <span id="res3" style="color: lightgreen;"></span></h2><h3>The Average time spent in the system</h3><h2 class="indent">W = <span id="res4" style="color: lightgreen;"></span></h2><h3>The Average time spent waiting in the queue</h3><h2 class="indent">Wq = <span id="res5" style="color: lightgreen;"></span></h2><h3>Probability of idle server</h3>';
             document.getElementById('res1').innerText = (util).toFixed(decimal);
@@ -166,6 +191,8 @@ calcBtn.addEventListener('click', ()=>{
             function prob(n){
               return Math.pow(r, n) * Math.exp(-r) / factorial(n);
             }
+            points = get_graph(Lq,prob);
+            console.log(points);
             probBtn.addEventListener('click', ()=>{
                 var nEl = document.getElementById('probcalcn');
                 var n = parseInt(nEl.value);
@@ -239,7 +266,8 @@ calcBtn.addEventListener('click', ()=>{
                   return Math.pow(r, n) * P0 / (factorial(c) * Math.pow(c, n - c));
               }
               }
-
+              points = get_graph(Lq,prob);
+              console.log(points);
             probBtn.addEventListener('click', ()=>{
               var nEl = document.getElementById('probcalcn');
               var n = parseInt(nEl.value);
@@ -256,7 +284,7 @@ calcBtn.addEventListener('click', ()=>{
             document.getElementById('res4').innerText = (W).toFixed(decimal);
             document.getElementById('res5').innerText = (Wq).toFixed(decimal);
             break;
-      case 'mmc*m': //Done
+      case 'mmcnn': //Done
             var c = parseInt(cEl.value); //c value
             var m = parseInt(mEl.value); //k value
             console.log("MMC*m");
@@ -293,16 +321,17 @@ calcBtn.addEventListener('click', ()=>{
                 W = L / (lamb * (m - L));
                 Wq = Lq / (lamb * (m - L));
                 var Lambdap = mu * (L - Lq);
-
-              function prob(n){
-                if (0 <= n && n < c) {
-                    return combination(m, n) * Math.pow(r, n) * fakeP0;
-                } else if (n >= c && n <= m) {
-                    return combination(m, n) * factorial(n) * Math.pow(r, n) * fakeP0 / (Math.pow(c, n - c) * factorial(c));
-                } else {
-                    return 0;
+                points = get_graph(Lq,prob);
+                console.log(points);
+                function prob(n){
+                  if (0 <= n && n < c) {
+                      return combination(m, n) * Math.pow(r, n) * fakeP0;
+                  } else if (n >= c && n <= m) {
+                      return combination(m, n) * factorial(n) * Math.pow(r, n) * fakeP0 / (Math.pow(c, n - c) * factorial(c));
+                  } else {
+                      return 0;
+                  }
                 }
-              }
               probBtn.addEventListener('click', ()=>{
                 var nEl = document.getElementById('probcalcn');
                 var n = parseInt(nEl.value);

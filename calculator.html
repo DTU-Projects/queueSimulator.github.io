@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
     <head>
         <title>Calculator</title>
         <meta charset="UTF-8">
@@ -11,12 +10,12 @@
     </head>
 
     <body>
-        
-        <nav>    
+
+        <nav>
             <div class="sidebar">
-                <li><a href="index.html"><i class="fa fa-fw fa-home"></i> Home</a></li>     
-                <li><a href="#" class="active"><i class="fa fa-fw fa-calculator"></i> Calculator</a></li>   
-                <li><a href="application.html"><i class="fa fa-fw fa-cogs"></i> Applications</a></li>
+                <li><a href="index.html"><i class="fa fa-fw fa-home"></i> Home</a></li>
+                <li><a href="#" class="active"><i class="fa fa-fw fa-calculator"></i> Calculator</a></li>
+                <li><a href="application.html"><i class="fa fa-fw fa-cogs"></i> More about Queuess</a></li>
                 <li><a href="about.html"><i class="fa fa-fw fa-info"></i> About</a></li>
             </div>
         </nav>
@@ -27,33 +26,37 @@
 
                 <div class="module-border-wrap">
                     <div class="module head">
-                        <h1>Queueing Theory Calculator</h1>
+                        <h1>Find Steady State Parameters</h1>
                     </div>
                 </div><br>
                 <div class="module-border-wrap">
                     <div class="module">
                         <h2>1. Choose the Queueing Model</h2>
+                        <h4>Kendall Notation (A/S/c):(K/N/D)<br>
+                          A denotes the time between arrivals to the queue, S the service time distribution and c the number of service channels open at the node<br>
+                          K is the capacity of the queue, N is the size of the population of jobs to be served, and D is the queueing discipline.<br>
+                        <h4>
                         <div class="grid-container">
                             <div class="grid-item">
-                                <div class="model tooltip" id="mmc2">M/M/C<br>
+                                <div class="model tooltip" id="mmc2">(M/M/c):(∞/∞/FIFO)<br>
                                     <button type="button" id="mmc"><span class="dot"></button>
                                     <span class="tooltiptext">Single queue, C servers</span>
                                 </div>
                             </div>
                             <div class="grid-item">
-                                <div class="model tooltip" id="mmi2">M/M/Inf<br>
+                                <div class="model tooltip" id="mmi2">(M/M/∞):(∞/∞/FIFO)<br>
                                     <button type="button" id="mmi"><span class="dot"></button>
                                     <span class="tooltiptext">Infinite number of servers</span>
                                 </div>
                             </div>
                             <div class="grid-item">
-                                <div class="model tooltip" id="mmck2">M/M/C/K<br>
+                                <div class="model tooltip" id="mmck2">(M/M/c):(K/∞/FIFO)<br>
                                     <button type="button" id="mmck"><span class="dot"></span></button>
                                     <span class="tooltiptext">Queue can hold maximum K customers at any time (extras will be lost)</span>
                                 </div>
                             </div>
                             <div class="grid-item">
-                                <div class="model tooltip" id="mmcm2">M/M/C/*/M<br>
+                                <div class="model tooltip" id="mmcm2">(M/M/c):(N/N/FIFO)<br>
                                     <button type="button" id="mmcm"><span class="dot"></span></button>
                                     <span class="tooltiptext">Population that can join queue is limited (M)</span>
                                 </div>
@@ -131,7 +134,7 @@
 
             </div>
         </div>
-        
+
         <script src="js/script.js" type="text/javascript"></script>
     </body>
 
