@@ -7,6 +7,7 @@
         <link rel="stylesheet" href="css/styles.css" type="text/css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
         integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
     </head>
 
     <body>
@@ -32,31 +33,28 @@
                 <div class="module-border-wrap">
                     <div class="module">
                         <h2>1. Choose the Queueing Model</h2>
-                        <h4>Kendall Notation (A/S/c):(K/N/D)<br>
-                          A denotes the time between arrivals to the queue, S the service time distribution and c the number of service channels open at the node<br>
-                          K is the capacity of the queue, N is the size of the population of jobs to be served, and D is the queueing discipline.<br>
-                        <h4>
+                        
                         <div class="grid-container">
                             <div class="grid-item">
-                                <div class="model tooltip" id="mmc2">(M/M/c):(∞/∞/FIFO)<br>
+                                <div class="model tooltip" id="mmc2">(M/M/c):<br>(∞/∞/FIFO)<br>
                                     <button type="button" id="mmc"><span class="dot"></button>
                                     <span class="tooltiptext">Single queue, C servers</span>
                                 </div>
                             </div>
                             <div class="grid-item">
-                                <div class="model tooltip" id="mmi2">(M/M/∞):(∞/∞/FIFO)<br>
+                                <div class="model tooltip" id="mmi2">(M/M/∞):<br>(∞/∞/FIFO)<br>
                                     <button type="button" id="mmi"><span class="dot"></button>
                                     <span class="tooltiptext">Infinite number of servers</span>
                                 </div>
                             </div>
                             <div class="grid-item">
-                                <div class="model tooltip" id="mmck2">(M/M/c):(K/∞/FIFO)<br>
+                                <div class="model tooltip" id="mmck2">(M/M/c):<br>(K/∞/FIFO)<br>
                                     <button type="button" id="mmck"><span class="dot"></span></button>
                                     <span class="tooltiptext">Queue can hold maximum K customers at any time (extras will be lost)</span>
                                 </div>
                             </div>
                             <div class="grid-item">
-                                <div class="model tooltip" id="mmcm2">(M/M/c):(N/N/FIFO)<br>
+                                <div class="model tooltip" id="mmcm2">(M/M/c):<br>(N/N/FIFO)<br>
                                     <button type="button" id="mmcm"><span class="dot"></span></button>
                                     <span class="tooltiptext">Population that can join queue is limited (M)</span>
                                 </div>
@@ -124,7 +122,9 @@
                 <div class="module-border-wrap">
                     <div class="module">
                         <h3>Graphs goes here</h3>
-                        <h1 style="color: lightgreen;">COMING SOON</h1>
+                        <canvas id="myChart">
+
+                        </canvas>
                     </div>
                 </div><br><br>
                 <button class="myBtn" id="upBtn" type="button">Back to top &uarr;</button>
