@@ -152,7 +152,7 @@ calcBtn.addEventListener('click', ()=>{
                 noPoints = points[0];
                 pointsForGraph = points[1];
             }
-            resultEl.innerHTML = '<h3>The Utilization</h3><h2 class="indent">&rho; = <span id="res1" style="color: lightgreen;"></span></h2><h3>The Expected number of jobs in the system</h3><h2 class="indent">L = <span id="res2" style="color: lightgreen;"></span></h2><h3>The Expected number of jobs in the queue</h3><h2 class="indent">Lq = <span id="res3" style="color: lightgreen;"></span></h2><h3>The Average time spent in the system</h3><h2 class="indent">W = <span id="res4" style="color: lightgreen;"></span></h2><h3>The Average time spent waiting in the queue</h3><h2 class="indent">Wq = <span id="res5" style="color: lightgreen;"></span></h2>';
+            resultEl.innerHTML = '<h3 id="p-size">The Utilization</h3><h2 class="indent">&rho; = <span id="res1" style="color: lightgreen;"></span></h2><h3 id="p-size">The Expected number of jobs in the system</h3><h2 class="indent">L = <span id="res2" style="color: lightgreen;"></span></h2><h3 id="p-size">The Expected number of jobs in the queue</h3><h2 class="indent">Lq = <span id="res3" style="color: lightgreen;"></span></h2><h3 id="p-size">The Average time spent in the system</h3><h2 class="indent">W = <span id="res4" style="color: lightgreen;"></span></h2><h3 id="p-size">The Average time spent waiting in the queue</h3><h2 class="indent">Wq = <span id="res5" style="color: lightgreen;"></span></h2>';
             document.getElementById('res1').innerText = (util).toFixed(decimal);
             document.getElementById('res2').innerText = (L).toFixed(decimal);
             document.getElementById('res3').innerText = (Lq).toFixed(decimal);
@@ -181,7 +181,7 @@ calcBtn.addEventListener('click', ()=>{
                 let Pn = prob(n);
                 document.getElementById('Pn').innerText = Pn.toFixed(3);
             });
-            resultEl.innerHTML = '<h3>The Expected number of jobs in the system</h3><h2 class="indent">L = <span id="res2" style="color: lightgreen;"></span></h2><h3>The Average time spent in the system</h3><h2 class="indent">W = <span id="res4" style="color: lightgreen;"></span></h2>';
+            resultEl.innerHTML = '<h3 id="p-size">The Expected number of jobs in the system</h3><h2 class="indent">L = <span id="res2" style="color: lightgreen;"></span></h2><h3 id="p-size">The Average time spent in the system</h3><h2 class="indent">W = <span id="res4" style="color: lightgreen;"></span></h2>';
             document.getElementById('res2').innerText = (L).toFixed(decimal);
             document.getElementById('res4').innerText = (W).toFixed(decimal);
         break;
@@ -251,7 +251,7 @@ calcBtn.addEventListener('click', ()=>{
                     document.getElementById('Pn').innerText = Pn.toFixed(3);
                 });
             }
-            resultEl.innerHTML = '<h3>The Utilization</h3><h2 class="indent">&rho; = <span id="res1" style="color: lightgreen;"></span></h2><h3>The Expected number of jobs in the system</h3><h2 class="indent">L = <span id="res2" style="color: lightgreen;"></span></h2><h3>The Expected number of jobs in the queue</h3><h2 class="indent">Lq = <span id="res3" style="color: lightgreen;"></span></h2><h3>The Average time spent in the system</h3><h2 class="indent">W = <span id="res4" style="color: lightgreen;"></span></h2><h3>The Average time spent waiting in the queue</h3><h2 class="indent">Wq = <span id="res5" style="color: lightgreen;"></span></h2>';
+            resultEl.innerHTML = '<h3 id="p-size">The Utilization</h3><h2 class="indent">&rho; = <span id="res1" style="color: lightgreen;"></span></h2><h3 id="p-size">The Expected number of jobs in the system</h3><h2 class="indent">L = <span id="res2" style="color: lightgreen;"></span></h2><h3 id="p-size">The Expected number of jobs in the queue</h3><h2 class="indent">Lq = <span id="res3" style="color: lightgreen;"></span></h2><h3 id="p-size">The Average time spent in the system</h3><h2 class="indent">W = <span id="res4" style="color: lightgreen;"></span></h2><h3 id="p-size">The Average time spent waiting in the queue</h3><h2 class="indent">Wq = <span id="res5" style="color: lightgreen;"></span></h2>';
             document.getElementById('res1').innerText = (util).toFixed(decimal);
             document.getElementById('res2').innerText = (L).toFixed(decimal);
             document.getElementById('res3').innerText = (Lq).toFixed(decimal);
@@ -316,7 +316,7 @@ calcBtn.addEventListener('click', ()=>{
                     document.getElementById('Pn').innerText = Pn.toFixed(3);
                 });
             }
-            resultEl.innerHTML = '<h3>The Expected number of jobs in the system</h3><h2 class="indent">L = <span id="res2" style="color: lightgreen;"></span></h2><h3>The Expected number of jobs in the queue</h3><h2 class="indent">Lq = <span id="res3" style="color: lightgreen;"></span></h2><h3>The Average time spent in the system</h3><h2 class="indent">W = <span id="res4" style="color: lightgreen;"></span></h2><h3>The Average time spent waiting in the queue</h3><h2 class="indent">Wq = <span id="res5" style="color: lightgreen;"></span></h2>';
+            resultEl.innerHTML = '<h3 id="p-size">The Expected number of jobs in the system</h3><h2 class="indent">L = <span id="res2" style="color: lightgreen;"></span></h2><h3 id="p-size">The Expected number of jobs in the queue</h3><h2 class="indent">Lq = <span id="res3" style="color: lightgreen;"></span></h2><h3 id="p-size">The Average time spent in the system</h3><h2 class="indent">W = <span id="res4" style="color: lightgreen;"></span></h2><h3 id="p-size">The Average time spent waiting in the queue</h3><h2 class="indent">Wq = <span id="res5" style="color: lightgreen;"></span></h2>';
             document.getElementById('res2').innerText = (L).toFixed(decimal);
             document.getElementById('res3').innerText = (Lq).toFixed(decimal);
             document.getElementById('res4').innerText = (W).toFixed(decimal);
@@ -349,7 +349,7 @@ grpBtn.addEventListener('click', ()=>{
                 label: 'Probability',
                 data: pointsForGraph,
                 backgroundColor: '#fff',
-                borderWidth: 1.5,
+                borderWidth: 2,
                 borderColor: 'purple',
                 hoverBorderColor: 'red'
             }]

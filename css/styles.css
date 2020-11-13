@@ -50,7 +50,7 @@ body{
 }
 
 .separator{
-    margin: 1000px;
+    margin: 1000px 0;
 }
 
 .dot{
@@ -93,6 +93,10 @@ body{
     background: #222;
     color: #fff;
     padding: 20px;
+}
+
+#prob{
+    font-size: 19px;
 }
 
 .myBtn{
@@ -182,6 +186,7 @@ html{
 .active{
     background: linear-gradient(to right, red, purple);
     color: #fff!important;
+    font-weight: bold;
 }
 
 /* End of SideNavbar */
@@ -193,5 +198,48 @@ html{
     .container{
         margin: 0;
         padding: 0;
+    }
+    .head{
+        font-size: 10px;
+    }
+    .myBtn{
+        font-size: 10px;
+    }
+    .module{
+        font-size: 14px;
+    }
+    .grid-container{
+        grid-template-columns: auto auto;
+    }
+    
+    .grid-item{
+        column-width: 100%;
+    }
+    #mmc2, #mmi2, #mmck2, #mmcm2{
+        font-size: 20px;
+    }
+    .module-border-wrap{
+        position: relative;
+        margin-left: 5%;
+        max-width: 90%;
+        padding: 2px;
+    }
+    input[type=number]{
+        font-size: 16px;
+        width: 80px;
+        height: 20px;
+        margin-top: 10px;
+    }
+    .module p{
+        font-size: 20px;
+    }
+    .indent{
+        font-size: 16px;
+    }
+    #p-size{
+        font-size: 14px;
+    }
+    #grpBtn, #graph{
+        display: none;
     }
 }
