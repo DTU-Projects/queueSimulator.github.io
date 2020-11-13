@@ -12,6 +12,7 @@ var probBtn = document.getElementById('probBtn');
 var type;
 
 var pointsForGraph;
+var noPoints;
 
 var inputEl = document.getElementById('dynamic_input');
 var resultEl = document.getElementById('dynamic_result');
@@ -141,17 +142,15 @@ calcBtn.addEventListener('click', ()=>{
                 probBtn.addEventListener('click', ()=>{
                     var nEl = document.getElementById('probcalcn');
                     var n = parseInt(nEl.value);
-                    console.log(n);
                     let Pn = prob(n);
-                    console.log(Pn);
                     document.getElementById('Pn').innerText = Pn.toFixed(3);
                 });
                 var counter, j=0;
                 var points=[];
                 var values=[];
                 points = get_graph(Lq,prob);
-                console.log(points[1]);
-                pointsForGraph = points[0];
+                noPoints = points[0];
+                pointsForGraph = points[1];
             }
             resultEl.innerHTML = '<h3>The Utilization</h3><h2 class="indent">&rho; = <span id="res1" style="color: lightgreen;"></span></h2><h3>The Expected number of jobs in the system</h3><h2 class="indent">L = <span id="res2" style="color: lightgreen;"></span></h2><h3>The Expected number of jobs in the queue</h3><h2 class="indent">Lq = <span id="res3" style="color: lightgreen;"></span></h2><h3>The Average time spent in the system</h3><h2 class="indent">W = <span id="res4" style="color: lightgreen;"></span></h2><h3>The Average time spent waiting in the queue</h3><h2 class="indent">Wq = <span id="res5" style="color: lightgreen;"></span></h2><h3>Probability of idle server</h3>';
             document.getElementById('res1').innerText = (util).toFixed(decimal);
@@ -174,13 +173,12 @@ calcBtn.addEventListener('click', ()=>{
               return Math.pow(r, n) * Math.exp(-r) / factorial(n);
             }
             points = get_graph(Lq,prob);
-            console.log(points);
+            noPoints = points[0];
+            pointsForGraph = points[1];
             probBtn.addEventListener('click', ()=>{
                 var nEl = document.getElementById('probcalcn');
                 var n = parseInt(nEl.value);
-                console.log(n);
                 let Pn = prob(n);
-                console.log(Pn);
                 document.getElementById('Pn').innerText = Pn.toFixed(3);
             });
             resultEl.innerHTML = '<h3>The Expected number of jobs in the system</h3><h2 class="indent">L = <span id="res2" style="color: lightgreen;"></span></h2><h3>The Average time spent in the system</h3><h2 class="indent">W = <span id="res4" style="color: lightgreen;"></span></h2>';
@@ -244,6 +242,8 @@ calcBtn.addEventListener('click', ()=>{
                     }
                 }
                 points = get_graph(Lq,prob);
+                noPoints = points[0];
+                pointsForGraph = points[1];
                 probBtn.addEventListener('click', ()=>{
                     var nEl = document.getElementById('probcalcn');
                     var n = parseInt(nEl.value);
@@ -296,7 +296,8 @@ calcBtn.addEventListener('click', ()=>{
                 Wq = Lq / (lamb * (m - L));
                 var Lambdap = mu * (L - Lq);
                 points = get_graph(Lq,prob);
-                console.log(points);
+                noPoints = points[0];
+                pointsForGraph = points[1];
                 function prob(n){
                     if(0 <= n && n < c){
                         return combination(m, n) * Math.pow(r, n) * fakeP0;
@@ -326,57 +327,64 @@ calcBtn.addEventListener('click', ()=>{
     window.location.href = "#result";
 });
 
-upBtn.addEventListener('click', ()=>{
-    window.location.href = "#top";
-});
 
 grpBtn.addEventListener('click', ()=>{
 
+
+    document.getElementById("myChart").remove(); //canvas
+    div = document.querySelector("#graph-container"); //canvas parent element
+    div.insertAdjacentHTML("afterbegin", "<canvas id='myChart'></canvas>"); //adding the canvas again
+
+    
     let myChart = document.getElementById('myChart').getContext('2d');
 
-    // Global Options
-    //Chart.defaults.global.defaultFontFamily = 'Lato';
-    //Chart.defaults.global.defaultFontSize = 18;
-    //Chart.defaults.global.defaultFontColor = '#777';
+    Chart.defaults.global.defaultFontFamily = 'Lato';
+    Chart.defaults.global.defaultFontSize = 15;
+    Chart.defaults.global.defaultFontColor = '#ddd';
 
-    let probChart = new Chart(myChart, {
-        type:'bar', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
-        data:{
-            labels:[],
-            datasets:[{
-                label:'Points',
-                data: pointsForGraph,
-                backgroundColor:'lightgreen',
-                borderWidth:1,
-                borderColor:'green',
-                hoverBorderWidth:2,
-            }]
+    let massPopChart = new Chart(myChart, {
+      type:'bar', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
+      data:{
+        labels: noPoints,
+        datasets: [{
+          label: 'Probability',
+          data: pointsForGraph,
+          backgroundColor: '#fff',
+          borderWidth:1,
+          borderColor: '#fff',
+          hoverBorderWidth: 2,
+          hoverBorderColor:'#ddd'
+        }]
+      },
+      options:{
+        title:{
+          display:true,
+          text:'Probability of lasan',
+          fontSize:25
         },
-        options:{
-            title:{
-                display:true,
-                text:'Probabilities',
-                fontSize:25
-            },
-            legend:{
-                display:true,
-                position:'right',
-                labels:{
-                    fontColor:'#000'
-                }
-            },
-            layout:{
-                padding:{
-                    left:50,
-                    right:0,
-                    bottom:0,
-                    top:0
-                }
-            },
-            tooltips:{
-                enabled:true
-            }
+        legend:{
+          display:true,
+          position:'right',
+          labels:{
+            fontColor:'#fff'
+          }
+        },
+        layout:{
+          padding:{
+            left:50,
+            right:0,
+            bottom:0,
+            top:0
+          }
+        },
+        tooltips:{
+          enabled:true
         }
+      }
     });
     window.location.href = "#graph";
+});
+
+upBtn.addEventListener('click', ()=>{
+    window.location.href = "#top";
 });
