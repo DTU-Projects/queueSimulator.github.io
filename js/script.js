@@ -152,7 +152,7 @@ calcBtn.addEventListener('click', ()=>{
                 noPoints = points[0];
                 pointsForGraph = points[1];
             }
-            resultEl.innerHTML = '<h3>The Utilization</h3><h2 class="indent">&rho; = <span id="res1" style="color: lightgreen;"></span></h2><h3>The Expected number of jobs in the system</h3><h2 class="indent">L = <span id="res2" style="color: lightgreen;"></span></h2><h3>The Expected number of jobs in the queue</h3><h2 class="indent">Lq = <span id="res3" style="color: lightgreen;"></span></h2><h3>The Average time spent in the system</h3><h2 class="indent">W = <span id="res4" style="color: lightgreen;"></span></h2><h3>The Average time spent waiting in the queue</h3><h2 class="indent">Wq = <span id="res5" style="color: lightgreen;"></span></h2><h3>Probability of idle server</h3>';
+            resultEl.innerHTML = '<h3>The Utilization</h3><h2 class="indent">&rho; = <span id="res1" style="color: lightgreen;"></span></h2><h3>The Expected number of jobs in the system</h3><h2 class="indent">L = <span id="res2" style="color: lightgreen;"></span></h2><h3>The Expected number of jobs in the queue</h3><h2 class="indent">Lq = <span id="res3" style="color: lightgreen;"></span></h2><h3>The Average time spent in the system</h3><h2 class="indent">W = <span id="res4" style="color: lightgreen;"></span></h2><h3>The Average time spent waiting in the queue</h3><h2 class="indent">Wq = <span id="res5" style="color: lightgreen;"></span></h2>';
             document.getElementById('res1').innerText = (util).toFixed(decimal);
             document.getElementById('res2').innerText = (L).toFixed(decimal);
             document.getElementById('res3').innerText = (Lq).toFixed(decimal);
@@ -339,48 +339,57 @@ grpBtn.addEventListener('click', ()=>{
     let myChart = document.getElementById('myChart').getContext('2d');
 
     Chart.defaults.global.defaultFontFamily = 'Lato';
-    Chart.defaults.global.defaultFontSize = 15;
     Chart.defaults.global.defaultFontColor = '#ddd';
 
-    let massPopChart = new Chart(myChart, {
-      type:'bar', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
-      data:{
-        labels: noPoints,
-        datasets: [{
-          label: 'Probability',
-          data: pointsForGraph,
-          backgroundColor: '#fff',
-          borderWidth:1,
-          borderColor: '#fff',
-          hoverBorderWidth: 2,
-          hoverBorderColor:'#ddd'
-        }]
-      },
-      options:{
-        title:{
-          display:true,
-          text:'Probability of lasan',
-          fontSize:25
+    let probChart = new Chart(myChart, {
+        type:'bar', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
+        data:{
+            labels: noPoints,
+            datasets: [{
+                label: 'Probability',
+                data: pointsForGraph,
+                backgroundColor: '#fff',
+                borderWidth: 1.5,
+                borderColor: 'purple',
+                hoverBorderColor: 'red'
+            }]
         },
-        legend:{
-          display:true,
-          position:'right',
-          labels:{
-            fontColor:'#fff'
-          }
-        },
-        layout:{
-          padding:{
-            left:50,
-            right:0,
-            bottom:0,
-            top:0
-          }
-        },
-        tooltips:{
-          enabled:true
+        options:{
+            title:{
+                display: true,
+                text: 'Probability of no. of customers in system',
+                fontSize: 24
+            },
+            legend:{
+                display:true,
+                position:'right',
+                labels:{
+                    fontSize: 18,
+                    fontColor:'#fff'
+                }
+            },
+            layout:{
+                padding:{
+                    left: 50,
+                    right: 0,
+                    bottom: 0,
+                    top: 0
+                }
+            },
+            tooltips:{
+                enabled:true
+            },
+            scales:{
+                xAxes:[{
+                    scaleLabel:{
+                        display: true,
+                        labelString: 'Number of Customers in system',
+                        fontSize: 20,
+                        fontFamily: 'Lato'
+                    }
+                }]
+            }
         }
-      }
     });
     window.location.href = "#graph";
 });

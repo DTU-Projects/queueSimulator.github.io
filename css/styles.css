@@ -157,7 +157,7 @@ html{
 
 .sidebar{
     height: 100%;
-    width: 160px;
+    width: auto;
     position: fixed;
     z-index: 1;
     top: 0;
@@ -184,9 +184,14 @@ html{
     color: #fff!important;
 }
 
-@media screen and (max-height: 450px) {
-    .sidebar {padding-top: 15px;}
-    .sidebar a {font-size: 18px;}
-}
-
 /* End of SideNavbar */
+
+@media only screen and (max-width: 641px) {
+    .sidebar{
+        display: none;
+    }
+    .container{
+        margin: 0;
+        padding: 0;
+    }
+}
