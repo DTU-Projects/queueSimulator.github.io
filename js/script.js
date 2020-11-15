@@ -331,11 +331,9 @@ calcBtn.addEventListener('click', ()=>{
 
 grpBtn.addEventListener('click', ()=>{
 
-
-    document.getElementById("myChart").remove(); //canvas
-    div = document.querySelector("#graph-container"); //canvas parent element
-    div.insertAdjacentHTML("afterbegin", "<canvas id='myChart'></canvas>"); //adding the canvas again
-
+    document.getElementById("myChart").remove();
+    div = document.querySelector("#graph-container");
+    div.insertAdjacentHTML("afterbegin", "<canvas id='myChart'></canvas>");
     
     let myChart = document.getElementById('myChart').getContext('2d');
 
@@ -343,7 +341,7 @@ grpBtn.addEventListener('click', ()=>{
     Chart.defaults.global.defaultFontColor = '#ddd';
 
     let probChart = new Chart(myChart, {
-        type:'bar', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
+        type:'bar',
         data:{
             labels: noPoints,
             datasets: [{
