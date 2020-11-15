@@ -1,7 +1,8 @@
 console.log("We will rock you!");
 
 var calcBtn = document.getElementById('calcBtn');
-var upBtn = document.getElementById('upBtn')
+var upBtn = document.getElementById('upBtn');
+var upBtn2 = document.getElementById('upBtn2');
 var grpBtn = document.getElementById('grpBtn');
 var decBtn = document.getElementById('decBtn');
 var mmcBtn = document.getElementById('mmc');
@@ -395,5 +396,9 @@ grpBtn.addEventListener('click', ()=>{
 });
 
 upBtn.addEventListener('click', ()=>{
+    window.location.href = "#top";
+});
+
+upBtn2.addEventListener('click', ()=>{
     window.location.href = "#top";
 });
