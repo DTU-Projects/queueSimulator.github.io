@@ -9,6 +9,7 @@ var mmcBtn = document.getElementById('mmc');
 var mmiBtn = document.getElementById('mmi');
 var mmckBtn = document.getElementById('mmck');
 var mmcmBtn = document.getElementById('mmcm');
+var md1Btn = document.getElementById('md1');
 var probBtn = document.getElementById('probBtn');
 var type;
 
@@ -52,6 +53,7 @@ function selectMMC(){
     mmiBtn.innerHTML = '<span class="dot"></span>';
     mmckBtn.innerHTML = '<span class="dot"></span>';
     mmcmBtn.innerHTML = '<span class="dot"></span>';
+    md1Btn.innerHTML = '<span class="dot"></span>';
 }
 function selectMMI(){
     console.log("Selecting MMInf model...");
@@ -61,6 +63,7 @@ function selectMMI(){
     mmiBtn.innerHTML = '<span class="dot-checked"></span>';
     mmckBtn.innerHTML = '<span class="dot"></span>';
     mmcmBtn.innerHTML = '<span class="dot"></span>';
+    md1Btn.innerHTML = '<span class="dot"></span>';
 }
 function selectMMCK(){
     console.log("Selecting MMCK model...")
@@ -70,6 +73,7 @@ function selectMMCK(){
     mmiBtn.innerHTML = '<span class="dot"></span>';
     mmckBtn.innerHTML = '<span class="dot-checked"></span>';
     mmcmBtn.innerHTML = '<span class="dot"></span>';
+    md1Btn.innerHTML = '<span class="dot"></span>';
 }
 function selectMMCM(){
     console.log("Selecting MMC*M model...");
@@ -79,6 +83,17 @@ function selectMMCM(){
     mmiBtn.innerHTML = '<span class="dot"></span>';
     mmckBtn.innerHTML = '<span class="dot"></span>';
     mmcmBtn.innerHTML = '<span class="dot-checked"></span>';
+    md1Btn.innerHTML = '<span class="dot"></span>';
+}
+function selectMD1(){
+    console.log("Selecting MD1 model...");
+    type = 'md1';
+    inputEl.innerHTML = '<div class="grid-container"><div class="model tooltip"><p>&lambda; (no units): <input type="number" value=60 id="lamb"></p><span class="tooltiptext">the arrival rate (the expected time between each customer arriving, e.g. 30 seconds)</span></div><div class="model tooltip"><p>&mu; (no units): <input type="number" value=75 id="mu"></p><span class="tooltiptext">the reciprocal of the mean service time (the expected number of consecutive service completions per the same unit time, e.g. per 30 seconds)</span></div></div>';
+    mmcBtn.innerHTML = '<span class="dot"></span>';
+    mmiBtn.innerHTML = '<span class="dot"></span>';
+    mmckBtn.innerHTML = '<span class="dot"></span>';
+    mmcmBtn.innerHTML = '<span class="dot"></span>';
+    md1Btn.innerHTML = '<span class="dot-checked"></span>';
 }
 
 decBtn.addEventListener('click', ()=>{
@@ -96,6 +111,9 @@ document.getElementById('mmck2').addEventListener('click', selectMMCK);
 
 mmcmBtn.addEventListener('click', selectMMCM);
 document.getElementById('mmcm2').addEventListener('click', selectMMCM);
+
+md1Btn.addEventListener('click', selectMD1);
+document.getElementById('md12').addEventListener('click', selectMD1);
 
 calcBtn.addEventListener('click', ()=>{
 
@@ -153,7 +171,7 @@ calcBtn.addEventListener('click', ()=>{
                 noPoints = points[0];
                 pointsForGraph = points[1];
             }
-            resultEl.innerHTML = '<h3 id="p-size">The Utilization</h3><h2 class="indent">&rho; = <span id="res1" style="color: lightgreen;"></span></h2><h3 id="p-size">The Expected number of jobs in the system</h3><h2 class="indent">L = <span id="res2" style="color: lightgreen;"></span></h2><h3 id="p-size">The Expected number of jobs in the queue</h3><h2 class="indent">Lq = <span id="res3" style="color: lightgreen;"></span></h2><h3 id="p-size">The Average time spent in the system</h3><h2 class="indent">W = <span id="res4" style="color: lightgreen;"></span></h2><h3 id="p-size">The Average time spent waiting in the queue</h3><h2 class="indent">Wq = <span id="res5" style="color: lightgreen;"></span></h2>';
+            resultEl.innerHTML = '<h3>The Utilization</h3><h2 class="indent">&rho; = <span id="res1" style="color: lightgreen;"></span></h2><h3>The Expected number of jobs in the system</h3><h2 class="indent">L = <span id="res2" style="color: lightgreen;"></span></h2><h3>The Expected number of jobs in the queue</h3><h2 class="indent">Lq = <span id="res3" style="color: lightgreen;"></span></h2><h3>The Average time spent in the system</h3><h2 class="indent">W = <span id="res4" style="color: lightgreen;"></span></h2><h3>The Average time spent waiting in the queue</h3><h2 class="indent">Wq = <span id="res5" style="color: lightgreen;"></span></h2>';
             document.getElementById('res1').innerText = (util).toFixed(decimal);
             document.getElementById('res2').innerText = (L).toFixed(decimal);
             document.getElementById('res3').innerText = (Lq).toFixed(decimal);
@@ -182,7 +200,7 @@ calcBtn.addEventListener('click', ()=>{
                 let Pn = prob(n);
                 document.getElementById('Pn').innerText = Pn.toFixed(3);
             });
-            resultEl.innerHTML = '<h3 id="p-size">The Expected number of jobs in the system</h3><h2 class="indent">L = <span id="res2" style="color: lightgreen;"></span></h2><h3 id="p-size">The Average time spent in the system</h3><h2 class="indent">W = <span id="res4" style="color: lightgreen;"></span></h2>';
+            resultEl.innerHTML = '<h3>The Expected number of jobs in the system</h3><h2 class="indent">L = <span id="res2" style="color: lightgreen;"></span></h2><h3>The Average time spent in the system</h3><h2 class="indent">W = <span id="res4" style="color: lightgreen;"></span></h2>';
             document.getElementById('res2').innerText = (L).toFixed(decimal);
             document.getElementById('res4').innerText = (W).toFixed(decimal);
         break;
@@ -252,7 +270,7 @@ calcBtn.addEventListener('click', ()=>{
                     document.getElementById('Pn').innerText = Pn.toFixed(3);
                 });
             }
-            resultEl.innerHTML = '<h3 id="p-size">The Utilization</h3><h2 class="indent">&rho; = <span id="res1" style="color: lightgreen;"></span></h2><h3 id="p-size">The Expected number of jobs in the system</h3><h2 class="indent">L = <span id="res2" style="color: lightgreen;"></span></h2><h3 id="p-size">The Expected number of jobs in the queue</h3><h2 class="indent">Lq = <span id="res3" style="color: lightgreen;"></span></h2><h3 id="p-size">The Average time spent in the system</h3><h2 class="indent">W = <span id="res4" style="color: lightgreen;"></span></h2><h3 id="p-size">The Average time spent waiting in the queue</h3><h2 class="indent">Wq = <span id="res5" style="color: lightgreen;"></span></h2>';
+            resultEl.innerHTML = '<h3>The Utilization</h3><h2 class="indent">&rho; = <span id="res1" style="color: lightgreen;"></span></h2><h3>The Expected number of jobs in the system</h3><h2 class="indent">L = <span id="res2" style="color: lightgreen;"></span></h2><h3>The Expected number of jobs in the queue</h3><h2 class="indent">Lq = <span id="res3" style="color: lightgreen;"></span></h2><h3>The Average time spent in the system</h3><h2 class="indent">W = <span id="res4" style="color: lightgreen;"></span></h2><h3>The Average time spent waiting in the queue</h3><h2 class="indent">Wq = <span id="res5" style="color: lightgreen;"></span></h2>';
             document.getElementById('res1').innerText = (util).toFixed(decimal);
             document.getElementById('res2').innerText = (L).toFixed(decimal);
             document.getElementById('res3').innerText = (Lq).toFixed(decimal);
@@ -317,11 +335,33 @@ calcBtn.addEventListener('click', ()=>{
                     document.getElementById('Pn').innerText = Pn.toFixed(3);
                 });
             }
-            resultEl.innerHTML = '<h3 id="p-size">The Expected number of jobs in the system</h3><h2 class="indent">L = <span id="res2" style="color: lightgreen;"></span></h2><h3 id="p-size">The Expected number of jobs in the queue</h3><h2 class="indent">Lq = <span id="res3" style="color: lightgreen;"></span></h2><h3 id="p-size">The Average time spent in the system</h3><h2 class="indent">W = <span id="res4" style="color: lightgreen;"></span></h2><h3 id="p-size">The Average time spent waiting in the queue</h3><h2 class="indent">Wq = <span id="res5" style="color: lightgreen;"></span></h2>';
+            resultEl.innerHTML = '<h3>The Expected number of jobs in the system</h3><h2 class="indent">L = <span id="res2" style="color: lightgreen;"></span></h2><h3>The Expected number of jobs in the queue</h3><h2 class="indent">Lq = <span id="res3" style="color: lightgreen;"></span></h2><h3>The Average time spent in the system</h3><h2 class="indent">W = <span id="res4" style="color: lightgreen;"></span></h2><h3>The Average time spent waiting in the queue</h3><h2 class="indent">Wq = <span id="res5" style="color: lightgreen;"></span></h2>';
             document.getElementById('res2').innerText = (L).toFixed(decimal);
             document.getElementById('res3').innerText = (Lq).toFixed(decimal);
             document.getElementById('res4').innerText = (W).toFixed(decimal);
             document.getElementById('res5').innerText = (Wq).toFixed(decimal);
+        break;
+
+        case 'md1':
+            console.log("MD1");
+            r = lamb/mu;
+            util = r;
+            L = r + (Math.pow(r,2)/2*(1-r));
+            Lq = Math.pow(r,2)/2*(1-r);
+            W = (1/mu) + r/(2*mu*(1-r));
+            Wq = r/(2*mu*(1-r));
+            D = (2-r)/(2*mu*(1-r)); //Average Delay in system
+            Dq = (r)/(2*mu*(1-r)); // Average Delay in queue
+                document.getElementById('p-size').innerHTML = '';
+            
+            resultEl.innerHTML = '<h3>The Utilization</h3><h2 class="indent">&rho; = <span id="res1" style="color: lightgreen;"></span></h2><h3>The Expected number of jobs in the system</h3><h2 class="indent">L = <span id="res2" style="color: lightgreen;"></span></h2><h3>The Expected number of jobs in the queue</h3><h2 class="indent">Lq = <span id="res3" style="color: lightgreen;"></span></h2><h3>The Average time spent in the system</h3><h2 class="indent">W = <span id="res4" style="color: lightgreen;"></span></h2><h3>The Average time spent waiting in the queue</h3><h2 class="indent">Wq = <span id="res5" style="color: lightgreen;"></span></h2><h3>The Average delay in system</h3><h2 class="indent">D = <span id="res6" style="color: lightgreen;"></span></h2><h3>The Average delay in the queue</h3><h2 class="indent">Dq = <span id="res7" style="color: lightgreen;"></span></h2>';
+            document.getElementById('res1').innerText = (util).toFixed(decimal);
+            document.getElementById('res2').innerText = (L).toFixed(decimal);
+            document.getElementById('res3').innerText = (Lq).toFixed(decimal);
+            document.getElementById('res4').innerText = (W).toFixed(decimal);
+            document.getElementById('res5').innerText = (Wq).toFixed(decimal);
+            document.getElementById('res6').innerText = (D).toFixed(decimal);
+            document.getElementById('res7').innerText = (Dq).toFixed(decimal);
         break;
     }
     probBtn.click();
@@ -331,65 +371,71 @@ calcBtn.addEventListener('click', ()=>{
 
 grpBtn.addEventListener('click', ()=>{
 
-    document.getElementById("myChart").remove();
-    div = document.querySelector("#graph-container");
-    div.insertAdjacentHTML("afterbegin", "<canvas id='myChart'></canvas>");
+    if(type == 'md1'){
+        document.getElementById("myChart").remove();
+        div = document.querySelector("#graph-container");
+        div.insertAdjacentHTML("afterbegin", "<h3>No Graph for (M/D/1):(∞/∞/FIFO) model</h3>");
+    }else{
+        document.getElementById("myChart").remove();
+        div = document.querySelector("#graph-container");
+        div.insertAdjacentHTML("afterbegin", "<canvas id='myChart'></canvas>");
+        
+        let myChart = document.getElementById('myChart').getContext('2d');
     
-    let myChart = document.getElementById('myChart').getContext('2d');
-
-    Chart.defaults.global.defaultFontFamily = 'Lato';
-    Chart.defaults.global.defaultFontColor = '#ddd';
-
-    let probChart = new Chart(myChart, {
-        type:'bar',
-        data:{
-            labels: noPoints,
-            datasets: [{
-                label: 'Probability',
-                data: pointsForGraph,
-                backgroundColor: '#fff',
-                borderWidth: 2,
-                borderColor: 'purple',
-                hoverBorderColor: 'red'
-            }]
-        },
-        options:{
-            title:{
-                display: true,
-                text: 'Probability of no. of customers in system',
-                fontSize: 24
-            },
-            legend:{
-                display:true,
-                position:'right',
-                labels:{
-                    fontSize: 18,
-                    fontColor:'#fff'
-                }
-            },
-            layout:{
-                padding:{
-                    left: 50,
-                    right: 0,
-                    bottom: 0,
-                    top: 0
-                }
-            },
-            tooltips:{
-                enabled:true
-            },
-            scales:{
-                xAxes:[{
-                    scaleLabel:{
-                        display: true,
-                        labelString: 'Number of Customers in system',
-                        fontSize: 20,
-                        fontFamily: 'Lato'
-                    }
+        Chart.defaults.global.defaultFontFamily = 'Lato';
+        Chart.defaults.global.defaultFontColor = '#ddd';
+    
+        let probChart = new Chart(myChart, {
+            type:'bar',
+            data:{
+                labels: noPoints,
+                datasets: [{
+                    label: 'Probability',
+                    data: pointsForGraph,
+                    backgroundColor: '#fff',
+                    borderWidth: 2,
+                    borderColor: 'purple',
+                    hoverBorderColor: 'red'
                 }]
+            },
+            options:{
+                title:{
+                    display: true,
+                    text: 'Probability of no. of customers in system',
+                    fontSize: 24
+                },
+                legend:{
+                    display:true,
+                    position:'right',
+                    labels:{
+                        fontSize: 18,
+                        fontColor:'#fff'
+                    }
+                },
+                layout:{
+                    padding:{
+                        left: 50,
+                        right: 0,
+                        bottom: 0,
+                        top: 0
+                    }
+                },
+                tooltips:{
+                    enabled:true
+                },
+                scales:{
+                    xAxes:[{
+                        scaleLabel:{
+                            display: true,
+                            labelString: 'Number of Customers in system',
+                            fontSize: 20,
+                            fontFamily: 'Lato'
+                        }
+                    }]
+                }
             }
-        }
-    });
+        });
+    }
     window.location.href = "#graph";
 });
 
