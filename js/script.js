@@ -100,19 +100,10 @@ decBtn.addEventListener('click', ()=>{
     calcBtn.click();
 });
 
-mmcBtn.addEventListener('click', selectMMC);
 document.getElementById('mmc2').addEventListener('click', selectMMC);
-
-mmiBtn.addEventListener('click', selectMMI);
 document.getElementById('mmi2').addEventListener('click', selectMMI);
-
-mmckBtn.addEventListener('click', selectMMCK);
 document.getElementById('mmck2').addEventListener('click', selectMMCK);
-
-mmcmBtn.addEventListener('click', selectMMCM);
 document.getElementById('mmcm2').addEventListener('click', selectMMCM);
-
-md1Btn.addEventListener('click', selectMD1);
 document.getElementById('md12').addEventListener('click', selectMD1);
 
 calcBtn.addEventListener('click', ()=>{
