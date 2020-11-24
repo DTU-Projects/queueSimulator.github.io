@@ -43,7 +43,7 @@
                         </h3>
                     </div>
                 </div>
-            </div>
+            </div><br>
             <div class="box">
                 <div class="module-border-wrap">
                     <div class="module head">
@@ -67,7 +67,7 @@
                         </h3>
                     </div>
                 </div>
-            </div>
+            </div><br>
             <div class="box">
                 <div class="module-border-wrap">
                     <div class="module head">
@@ -77,7 +77,7 @@
                 <div class="module-border-wrap">
                     <div class="module">
                         <h3>In an M/M/c/K queue only K customers can queue at any one time (including those in service). Any further arrivals to the queue are considered "lost".<br>
-                            Some Examples of M/M/c:K are:
+                            <br>Some Examples of M/M/c:K are:
                             <ul>
                                 <li>Manufacturing where machine may have limited buffer area</li>
                                 <li>One lane drive in window in fast food restaurant </li>
@@ -86,7 +86,7 @@
                         </h3>
                     </div>
                 </div>
-            </div>
+            </div><br>
             <div class="box">
                 <div class="module-border-wrap">
                     <div class="module head">
@@ -96,10 +96,29 @@
                 <div class="module-border-wrap">
                     <div class="module">
                         <h3>Total Population and system capacity is limited to N<br>
-                            Some Examples of M/M/c:N/N are:
+                            <br>Some Examples of M/M/c:N/N are:
                             <ul>
                                 <li>Machine Servicing Model </li>
                                 <li>N machines that are subject to breakdowns. There are c repairmen to repair these machines.If c < N, then machines may have to wait before the repair starts.</li>
+                            </ul>
+                        </h3>
+                    </div>
+                </div>
+            </div><br>
+            <div class="box">
+                <div class="module-border-wrap">
+                    <div class="module head">
+                        <h1>(M/D/1):(∞/∞/FIFO)</h1>
+                    </div>
+                </div><br>
+                <div class="module-border-wrap">
+                    <div class="module">
+                        <h3>
+                            An M/D/1 queue is a stochastic process whose state space is the set {0,1,2,3,...} where the value corresponds to the number of entities in the system, including any currently in service. Arrivals occur at rate λ according to a Poisson process and move the process from state i to i + 1. Service times are deterministic time D (serving at rate μ = 1/D). A single server serves entities one at a time from the front of the queue, according to a first-come, first-served discipline. When the service is complete the entity leaves the queue and the number of entities in the system reduces by one. The buffer is of infinite size, so there is no limit on the number of entities it can contain.<br>
+                            Includes applications in wide area network design, where a single central processor to read the headers of the packets arriving in exponential fashion, then computes the next adapter to which each packet should go and dispatch the packets accordingly. Here the service time is the processing of the packet header and cyclic redundancy check, which are independent of the length of each arriving packets. Hence, it can be modelled as a M/D/1 queue.<br>
+                            <br>Examples of (M/D/1):(∞/∞/FIFO)
+                            <ul>
+                                <li>Considering a system that has only one server, with an arrival rate of 20 entities per hour and the service rate is at a constant of 30 per hour.</li>
                             </ul>
                         </h3>
                     </div>
