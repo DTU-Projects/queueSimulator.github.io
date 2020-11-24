@@ -118,6 +118,7 @@ calcBtn.addEventListener('click', ()=>{
     var mu = parseInt(muEl.value);
     var decimal= parseInt(deciEl.value);
 
+
     switch(type){
         case 'mmc':
             var c = parseInt(cEl.value)
@@ -343,8 +344,8 @@ calcBtn.addEventListener('click', ()=>{
             Wq = r/(2*mu*(1-r));
             D = (2-r)/(2*mu*(1-r)); //Average Delay in system
             Dq = (r)/(2*mu*(1-r)); // Average Delay in queue
-                document.getElementById('p-size').innerHTML = '';
             
+            document.getElementById('probBtn').disable = true;
             resultEl.innerHTML = '<h3>The Utilization</h3><h2 class="indent">&rho; = <span id="res1" style="color: lightgreen;"></span></h2><h3>The Expected number of jobs in the system</h3><h2 class="indent">L = <span id="res2" style="color: lightgreen;"></span></h2><h3>The Expected number of jobs in the queue</h3><h2 class="indent">Lq = <span id="res3" style="color: lightgreen;"></span></h2><h3>The Average time spent in the system</h3><h2 class="indent">W = <span id="res4" style="color: lightgreen;"></span></h2><h3>The Average time spent waiting in the queue</h3><h2 class="indent">Wq = <span id="res5" style="color: lightgreen;"></span></h2><h3>The Average delay in system</h3><h2 class="indent">D = <span id="res6" style="color: lightgreen;"></span></h2><h3>The Average delay in the queue</h3><h2 class="indent">Dq = <span id="res7" style="color: lightgreen;"></span></h2>';
             document.getElementById('res1').innerText = (util).toFixed(decimal);
             document.getElementById('res2').innerText = (L).toFixed(decimal);
@@ -353,6 +354,7 @@ calcBtn.addEventListener('click', ()=>{
             document.getElementById('res5').innerText = (Wq).toFixed(decimal);
             document.getElementById('res6').innerText = (D).toFixed(decimal);
             document.getElementById('res7').innerText = (Dq).toFixed(decimal);
+            document.getElementById('Pn').innerText = 'Not applicable in MD1 model';
         break;
     }
     probBtn.click();
@@ -363,11 +365,18 @@ calcBtn.addEventListener('click', ()=>{
 grpBtn.addEventListener('click', ()=>{
 
     if(type == 'md1'){
-        document.getElementById("myChart").remove();
+        if(document.getElementById("myChart")){
+            document.getElementById("myChart").remove();
+        }
         div = document.querySelector("#graph-container");
-        div.insertAdjacentHTML("afterbegin", "<h3>No Graph for (M/D/1):(∞/∞/FIFO) model</h3>");
+        div.insertAdjacentHTML("afterbegin", "<h2 id='noGrp'>No Graph for (M/D/1):(∞/∞/FIFO) model</h2>");
     }else{
-        document.getElementById("myChart").remove();
+        if(document.getElementById("myChart")){
+            document.getElementById("myChart").remove();
+        }
+        if(document.getElementById('noGrp')){
+            document.getElementById('noGrp').remove();
+        }
         div = document.querySelector("#graph-container");
         div.insertAdjacentHTML("afterbegin", "<canvas id='myChart'></canvas>");
         
