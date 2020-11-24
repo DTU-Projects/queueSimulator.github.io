@@ -17,7 +17,7 @@
                 <li><a href="about.html"><i class="fa fa-fw fa-info"></i> About</a></li>
             </div>
         </nav>
-        <div class="container">
+        <div class="container" style="padding-bottom: 50px;">
             <div class="box">
                 <div class="module-border-wrap">
                     <div class="module head">
@@ -28,10 +28,18 @@
                     <div class="module">
                         <h3>
                             In queueing theory, a discipline within the mathematical theory of probability, the M/M/c queue (or Erlang–C model) is a multi-server queueing model. In Kendall's notation it describes a system where arrivals form a single queue and are governed by a Poisson process, there are c servers and job service times are exponentially distributed. It is a generalisation of the M/M/1 queue which considers only a single server. The model with infinitely many servers is the M/M/∞ queue.<br><br>
-                            An M/M/c queue is a stochastic process whose state space is the set {0, 1, 2, 3, ...} where the value corresponds to the number of customers in the system, including any currently in service.<br>
-                            1. Arrivals occur at rate λ according to a Poisson process and move the process from state i to i+1.<br>
-                            2. Service times have an exponential distribution with parameter μ. If there are fewer than c jobs, some of the servers will be idle. If there are more than c jobs, the jobs queue in a buffer.<br>
-                            3. The buffer is of infinite size, so there is no limit on the number of customers it can contain.<br>
+                            An M/M/c queue is a stochastic process whose state space is the set {0, 1, 2, 3, ...} where the value corresponds to the number of customers in the system, including any currently in service.
+                            <ol>
+                                <li>Arrivals occur at rate λ according to a Poisson process and move the process from state i to i+1.</li>
+                                <li>Service times have an exponential distribution with parameter μ. If there are fewer than c jobs, some of the servers will be idle. If there are more than c jobs, the jobs queue in a buffer.</li>
+                                <li>The buffer is of infinite size, so there is no limit on the number of customers it can contain.</li>
+                            </ol>
+                            Some Examples of M/M/c are:
+                            <ul>
+                                <li>Car wash facility with one way</li>
+                                <li>Token windows for metro rail</li>
+                                <li>Toll plaza</li>
+                            </ul>
                         </h3>
                     </div>
                 </div>
@@ -45,9 +53,17 @@
                 <div class="module-border-wrap">
                     <div class="module">
                         <h3>The M/M/∞ queue is a multi-server queueing model where every arrival experiences immediate service and does not wait. In Kendall's notation it describes a system where arrivals are governed by a Poisson process, there are infinitely many servers, so jobs do not need to wait for a server. Each job has an exponentially distributed service time. It is a limit of the M/M/c queue model where  the number of servers c becomes very large.<br><br>
-                            An M/M/∞ queue is a stochastic process whose state space is the set {0,1,2,3,...} where the value corresponds to the number of customers currently being served. Since, the number of servers in parallel is infinite, there is no queue and the number of customers in the systems coincides with the number of customers being served at any moment.<br>
-                            1. Arrivals occur at rate λ according to a Poisson process and move the process from state i to i + 1.<br>
-                            2. Service times have an exponential distribution with parameter μ and there are always sufficient servers such that every arriving job is served immediately. Transitions from state i to i − 1 are at rate iμ<br>
+                            An M/M/∞ queue is a stochastic process whose state space is the set {0,1,2,3,...} where the value corresponds to the number of customers currently being served. Since, the number of servers in parallel is infinite, there is no queue and the number of customers in the systems coincides with the number of customers being served at any moment.
+                            <ol>
+                                <li>Arrivals occur at rate λ according to a Poisson process and move the process from state i to i + 1.</li>
+                                <li>Service times have an exponential distribution with parameter μ and there are always sufficient servers such that every arriving job is served immediately. Transitions from state i to i − 1 are at rate iμ</li>
+                            </ol>
+                            Some Examples of M/M/∞ are:
+                            <ul>
+                                <li>Self Service Model(Customers is also a server)</li>
+                                <li>Token windows for metro rail</li>
+                                <li>Students giving exams</li>
+                            </ul>
                         </h3>
                     </div>
                 </div>
@@ -60,7 +76,14 @@
                 </div><br>
                 <div class="module-border-wrap">
                     <div class="module">
-                        <h3>In an M/M/c/K queue only K customers can queue at any one time (including those in service). Any further arrivals to the queue are considered "lost".</h3>
+                        <h3>In an M/M/c/K queue only K customers can queue at any one time (including those in service). Any further arrivals to the queue are considered "lost".<br>
+                            Some Examples of M/M/c:K are:
+                            <ul>
+                                <li>Manufacturing where machine may have limited buffer area</li>
+                                <li>One lane drive in window in fast food restaurant </li>
+                                <li>Parking facility with limited area</li>
+                            </ul>
+                        </h3>
                     </div>
                 </div>
             </div>
@@ -72,7 +95,13 @@
                 </div><br>
                 <div class="module-border-wrap">
                     <div class="module">
-                        <h3>Total Population and system capacity is limited to N</h3>
+                        <h3>Total Population and system capacity is limited to N<br>
+                            Some Examples of M/M/c:N/N are:
+                            <ul>
+                                <li>Machine Servicing Model </li>
+                                <li>N machines that are subject to breakdowns. There are c repairmen to repair these machines.If c < N, then machines may have to wait before the repair starts.</li>
+                            </ul>
+                        </h3>
                     </div>
                 </div>
             </div>
