@@ -83,6 +83,11 @@ body{
     border: none;
 }
 
+button:focus{
+    border: none;
+    outline: none;
+}
+
 .head{
     text-align: center;
     font-size: 25px;
@@ -266,6 +271,27 @@ html{
         font-size: 20px;
     }
     #notInMob{
+        display: none;
+    }
+}
+
+/* Topbar */
+
+.topbar a{
+    text-align: center;
+    padding: 4px 0;
+    text-decoration: none;
+    font-size: 20px;
+    color: #fff;
+    display: block;
+}
+.subMenu{
+    padding: 28px 0 5px;
+    background-color: #333;
+}
+
+@media only screen  and (min-width : 641px){
+    .topbar{
         display: none;
     }
 }
