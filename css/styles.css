@@ -202,6 +202,7 @@ html{
     font-weight: bold;
 }
 
+
 /* End of SideNavbar */
 
 @media only screen and (max-width: 641px) {
@@ -263,5 +264,8 @@ html{
     }
     #md12{
         font-size: 20px;
+    }
+    #notInMob{
+        display: none;
     }
 }
